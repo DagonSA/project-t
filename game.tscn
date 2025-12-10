@@ -1,0 +1,347 @@
+[gd_scene load_steps=21 format=3 uid="uid://vu2alle4qgci"]
+
+[ext_resource type="Texture2D" uid="uid://cr8ivtmsplk1t" path="res://WorldMap/Hex Tile Set.png" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_eow3j"]
+[ext_resource type="Script" uid="uid://dtjv41xbyws5a" path="res://WorldMap/tile_map.gd" id="3_7jktm"]
+[ext_resource type="Script" uid="uid://tca3mywygoq5" path="res://Game/Spawners/tile_spawner.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://bbpdqts2ptat4" path="res://Game/Spawners/player_spawner.gd" id="7_j5wjh"]
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="7_lc2xo"]
+[ext_resource type="Resource" uid="uid://bxsu4g5ptyx5u" path="res://Characters/Playable/Crusader/crusader_data.tres" id="8_215e1"]
+[ext_resource type="Resource" uid="uid://dxrs50tb3eny6" path="res://Characters/Playable/Explorer/explorer_data.tres" id="9_7sc4i"]
+[ext_resource type="Resource" uid="uid://s0xsryotmpth" path="res://Characters/Playable/Marksman/marksman_data.tres" id="10_80cx4"]
+[ext_resource type="Resource" uid="uid://dcippkencbmre" path="res://Characters/Playable/Scientist/scientist_data.tres" id="11_e8heu"]
+[ext_resource type="Resource" uid="uid://b3u3e7wg8ibem" path="res://Characters/Playable/Sniper/sniper_data.tres" id="12_rvswv"]
+[ext_resource type="Resource" uid="uid://cs2wtvr2h3eud" path="res://Characters/Playable/Warrior/warrior_data.tres" id="13_boyg6"]
+[ext_resource type="Script" uid="uid://cn6wheqtnt4at" path="res://game_mode.gd" id="14_215e1"]
+[ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="15_7sc4i"]
+[ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://label_turn_over.gd" id="15_80cx4"]
+[ext_resource type="Script" uid="uid://c6p3wg8u08f4e" path="res://UI/CharInfoLabel/stats.gd" id="15_e8heu"]
+[ext_resource type="Script" uid="uid://c2xobutpjstyb" path="res://Game/Global/board_manager.gd" id="15_rvswv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
+texture = ExtResource("1_e2o6t")
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(120, 140)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_epypp"]
+tile_shape = 3
+tile_size = Vector2i(120, 140)
+sources/0 = SubResource("TileSetAtlasSource_e2o6t")
+
+[node name="Main" type="Node2D"]
+
+[node name="Game" type="Node2D" parent="."]
+script = ExtResource("1_fc0e3")
+
+[node name="SpaceBg" type="Parallax2D" parent="Game"]
+ignore_camera_scroll = true
+
+[node name="Space" type="Parallax2D" parent="Game/SpaceBg"]
+repeat_size = Vector2(1920, 1080)
+autoscroll = Vector2(30, 30)
+
+[node name="Space" type="Sprite2D" parent="Game/SpaceBg/Space"]
+texture = ExtResource("2_eow3j")
+
+[node name="TileMap" type="TileMap" parent="Game"]
+tile_set = SubResource("TileSet_epypp")
+format = 2
+script = ExtResource("3_7jktm")
+
+[node name="base" type="TileMapLayer" parent="Game/TileMap"]
+use_parent_material = true
+tile_set = SubResource("TileSet_epypp")
+
+[node name="overlay" type="TileMapLayer" parent="Game/TileMap"]
+use_parent_material = true
+tile_set = SubResource("TileSet_epypp")
+
+[node name="TileSpawner" type="Node" parent="Game/TileMap"]
+script = ExtResource("3_feb5d")
+
+[node name="Camera2D" type="Camera2D" parent="Game"]
+
+[node name="PlayerSpawner" type="Node" parent="Game"]
+script = ExtResource("7_j5wjh")
+roster = Array[ExtResource("7_lc2xo")]([ExtResource("8_215e1"), ExtResource("9_7sc4i"), ExtResource("10_80cx4"), ExtResource("11_e8heu"), ExtResource("12_rvswv"), ExtResource("13_boyg6")])
+blue_spawn_tile = Vector2i(2, 0)
+orange_spawn_tile = Vector2i(0, 2)
+
+[node name="GameMode" type="Node2D" parent="Game"]
+script = ExtResource("14_215e1")
+
+[node name="BoardManager" type="Node2D" parent="Game"]
+script = ExtResource("15_rvswv")
+
+[node name="UI Root" type="CanvasLayer" parent="."]
+
+[node name="CharacterPanel" type="Control" parent="UI Root"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Stats" type="VBoxContainer" parent="UI Root/CharacterPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 50.0
+grow_horizontal = 0
+script = ExtResource("15_e8heu")
+
+[node name="SelCharName" type="Label" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="Attack" type="HBoxContainer" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+
+[node name="AttName" type="Label" parent="UI Root/CharacterPanel/Stats/Attack"]
+layout_mode = 2
+text = "Attack: "
+
+[node name="AttValue" type="Label" parent="UI Root/CharacterPanel/Stats/Attack"]
+layout_mode = 2
+
+[node name="Defense" type="HBoxContainer" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+
+[node name="DefName" type="Label" parent="UI Root/CharacterPanel/Stats/Defense"]
+layout_mode = 2
+text = "Defense: "
+
+[node name="DefValue" type="Label" parent="UI Root/CharacterPanel/Stats/Defense"]
+layout_mode = 2
+
+[node name="Speed" type="HBoxContainer" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+
+[node name="SpdName" type="Label" parent="UI Root/CharacterPanel/Stats/Speed"]
+layout_mode = 2
+text = "Speed: "
+
+[node name="SpdValue" type="Label" parent="UI Root/CharacterPanel/Stats/Speed"]
+layout_mode = 2
+
+[node name="Intellect" type="HBoxContainer" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+
+[node name="IntName" type="Label" parent="UI Root/CharacterPanel/Stats/Intellect"]
+layout_mode = 2
+text = "Intellect: "
+
+[node name="IntValue" type="Label" parent="UI Root/CharacterPanel/Stats/Intellect"]
+layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="UI Root/CharacterPanel/Stats"]
+layout_mode = 2
+
+[node name="ActName" type="Label" parent="UI Root/CharacterPanel/Stats/Actions"]
+layout_mode = 2
+text = "Actions: "
+
+[node name="ActValue" type="Label" parent="UI Root/CharacterPanel/Stats/Actions"]
+layout_mode = 2
+
+[node name="GameInfoPanel" type="Control" parent="UI Root"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndTurn" type="Button" parent="UI Root/GameInfoPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.999996
+offset_top = 904.9999
+offset_right = 908.0
+offset_bottom = 1303.9999
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("15_7sc4i")
+
+[node name="TurnOrder" type="Label" parent="UI Root/GameInfoPanel"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("15_80cx4")
+
+[connection signal="pressed" from="UI Root/GameInfoPanel/EndTurn" to="Game/GameMode" method="_on_end_turn_pressed"]

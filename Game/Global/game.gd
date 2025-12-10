@@ -1,0 +1,24 @@
+extends Node2D
+
+@onready var tilemap: TileMap #Getting access to TileMap
+@onready var camera: Camera2D #Getting access to Camera2d
+#@onready var background: Sprite2D
+var map_centerpx: Vector2 #Setting center of the map
+
+func _ready() -> void:
+	camera = $Camera2D
+	tilemap = $TileMap
+	#background = $Backgroundimg
+	
+	#Setting camera and background to the middle of the screen based on center tile
+	var local_pos:= tilemap.map_to_local(Vector2i(0,0)) 
+	map_centerpx = tilemap.to_global(local_pos)
+	camera.global_position = map_centerpx
+	#background.global_position = map_centerpx
+
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

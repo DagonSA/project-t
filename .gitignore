@@ -1,0 +1,25 @@
+
+# --- Godot-specific ---
+# Godot 4 imported assets
+.godot/imported/
+
+# Godot 3 imported assets
+.import/
+
+# Mono / C# data
+.mono/
+data_*/mono/
+
+# --- OS / editor junk ---
+# Windows / Mac
+Thumbs.db
+.DS_Store
+
+# Logs / temps
+*.log
+*.tmp
+
+# IDE / editor folders
+.vs/
+.vscode/
+.idea/

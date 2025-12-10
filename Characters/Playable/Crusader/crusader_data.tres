@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bxsu4g5ptyx5u"]
+
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_ye73r"]
+[ext_resource type="Texture2D" uid="uid://cwvq16bn4fo4g" path="res://Characters/Playable/Crusader/crusader_ssframe.tres" id="2_synfj"]
+
+[resource]
+script = ExtResource("1_ye73r")
+display_name = "Crusader"
+starting_health = 5
+starting_damage = 1
+starting_attack = 2
+starting_defence = 3
+starting_speed = 1
+starting_intellect = 1
+starting_team = "Blue"
+portrait = ExtResource("2_synfj")
+metadata/_custom_type_script = "uid://chace5ijh0p23"

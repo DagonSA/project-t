@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://dcippkencbmre"]
+
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_krd17"]
+[ext_resource type="Texture2D" uid="uid://euel7fmpskp7" path="res://Characters/Playable/Scientist/scientist_ssframe.tres" id="1_ktjkv"]
+
+[resource]
+script = ExtResource("1_krd17")
+display_name = "Scientist"
+starting_health = 5
+starting_damage = 1
+starting_attack = 1
+starting_defence = 1
+starting_speed = 2
+starting_intellect = 3
+starting_team = "Orange"
+portrait = ExtResource("1_ktjkv")
+metadata/_custom_type_script = "uid://chace5ijh0p23"

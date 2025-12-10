@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cr811iv5eoqkr"]
+
+[ext_resource type="Texture2D" uid="uid://b53jj3dh73a7h" path="res://Characters/Playable/Sniper/sniper_ss.png" id="1_qc4b6"]
+
+[resource]
+atlas = ExtResource("1_qc4b6")
+region = Rect2(0.545, 0.022, 66, 62.9)

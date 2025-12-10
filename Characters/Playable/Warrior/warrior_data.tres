@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://cs2wtvr2h3eud"]
+
+[ext_resource type="Texture2D" uid="uid://bdetpjlut7qmx" path="res://Characters/Playable/Warrior/warrior_ssframe.tres" id="1_im3js"]
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_le6dn"]
+
+[resource]
+script = ExtResource("1_le6dn")
+display_name = "Warrior"
+starting_health = 5
+starting_damage = 1
+starting_attack = 2
+starting_defence = 2
+starting_speed = 3
+starting_intellect = 1
+starting_team = "Orange"
+portrait = ExtResource("1_im3js")
+metadata/_custom_type_script = "uid://chace5ijh0p23"

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cwvq16bn4fo4g"]
+
+[ext_resource type="Texture2D" uid="uid://bx0yrr2tuam6a" path="res://Characters/Playable/Crusader/crusader_ss.png" id="1_gxskq"]
+
+[resource]
+atlas = ExtResource("1_gxskq")
+region = Rect2(0.545, 0.022, 66, 62.9)

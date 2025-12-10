@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://dxrs50tb3eny6"]
+
+[ext_resource type="Texture2D" uid="uid://36rdhxbox6ys" path="res://Characters/Playable/Explorer/explorer_ssframe.tres" id="1_7vkkv"]
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_fy7h5"]
+
+[resource]
+script = ExtResource("1_fy7h5")
+display_name = "Explorer"
+starting_health = 5
+starting_damage = 1
+starting_attack = 1
+starting_defence = 1
+starting_speed = 2
+starting_intellect = 3
+starting_team = "Blue"
+portrait = ExtResource("1_7vkkv")
+metadata/_custom_type_script = "uid://chace5ijh0p23"
