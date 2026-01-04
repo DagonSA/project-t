@@ -1,0 +1,9 @@
+2,3 - Desert
+5,1 - Jungle
+3,8 - Mountain
+0,12 - Fortress
+7,0 - Temple
+8,8 - Library
+10,7 - Heart
+0,0 - Terminus
+0, 12 - Void, but with recoloring? 

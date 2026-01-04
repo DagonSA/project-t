@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://b3u3e7wg8ibem"]
 
-[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_rnea0"]
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data.gd" id="1_rnea0"]
 [ext_resource type="Texture2D" uid="uid://cr811iv5eoqkr" path="res://Characters/Playable/Sniper/sniper_ssframe.tres" id="1_rui3u"]
 
 [resource]

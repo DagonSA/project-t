@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://s0xsryotmpth"]
 
-[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data_template.gd" id="1_0s5gm"]
+[ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data.gd" id="1_0s5gm"]
 [ext_resource type="Texture2D" uid="uid://dliny821deqbw" path="res://Characters/Playable/Marksman/marksman_ssframe.tres" id="1_tskav"]
 
 [resource]

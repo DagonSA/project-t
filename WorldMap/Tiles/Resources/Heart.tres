@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HexTileData" load_steps=2 format=3 uid="uid://btl4ndsrdoxb3"]
+
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Hex_tile_data.gd" id="1_t335k"]
+
+[resource]
+script = ExtResource("1_t335k")
+tile_id = 3
+atlas_coords = Vector2i(10, 7)
+terrain_type = 2
+special_type = 3
+base_wall_pattern = 1
+metadata/_custom_type_script = "uid://01f3ml1pgkdv"

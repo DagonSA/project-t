@@ -17,8 +17,3 @@ func _ready() -> void:
 	#background.global_position = map_centerpx
 
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

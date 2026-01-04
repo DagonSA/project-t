@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HexTileData" load_steps=2 format=3 uid="uid://cmuqtvo4cxruv"]
+
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Hex_tile_data.gd" id="1_jamim"]
+
+[resource]
+script = ExtResource("1_jamim")
+tile_id = 12
+atlas_coords = Vector2i(2, 3)
+terrain_type = 3
+special_type = 4
+base_wall_pattern = 4
+metadata/_custom_type_script = "uid://01f3ml1pgkdv"

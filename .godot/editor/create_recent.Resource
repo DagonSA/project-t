@@ -1,2 +1,4 @@
+HexTileData
+Resource
 AtlasTexture
 CharacterData

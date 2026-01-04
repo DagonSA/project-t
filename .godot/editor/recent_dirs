@@ -1,4 +1,8 @@
+D:/Godot/project-t/WorldMap/Tiles
 res://Game/Global
+res://WorldMap/Tiles/Resources
+D:/Godot/project-t
+res://
 res://WorldMap
 res://UI/CharInfoLabel
 res://Game
@@ -8,4 +12,3 @@ res://Characters/Playable/Scientist
 res://Characters/Playable/Marksman
 res://Characters/Playable/Explorer
 res://Characters/Playable/Crusader
-res://
