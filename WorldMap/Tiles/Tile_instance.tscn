@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ig5rq5g0nor"]
+
+[ext_resource type="Texture2D" uid="uid://cr8ivtmsplk1t" path="res://WorldMap/Tiles/Hex Tile Set.png" id="2_lx0wo"]
+
+[sub_resource type="GDScript" id="GDScript_sp863"]
+script/source = "extends Node2D
+
+var tile_data: HexTileData
+var board_coords: Vector2i
+var final_wall_pattern: Array[bool]
+
+func _ready() -> void:
+	$GroundTexture.texture = tile_data.texture
+"
+
+[node name="TileInstance" type="Node2D"]
+script = SubResource("GDScript_sp863")
+
+[node name="GroundTexture" type="Sprite2D" parent="."]
+texture = ExtResource("2_lx0wo")
+region_enabled = true
+region_rect = Rect2(0, 0, 120, 140)
+
+[node name="Wall0" type="Line2D" parent="."]
+position = Vector2(-1, 0)
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0
+
+[node name="Wall1" type="Line2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.0471976
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0
+
+[node name="Wall2" type="Line2D" parent="."]
+rotation = 2.0943952
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0
+
+[node name="Wall3" type="Line2D" parent="."]
+position = Vector2(1, 1)
+rotation = 3.1415927
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0
+
+[node name="Wall4" type="Line2D" parent="."]
+position = Vector2(0, 1)
+rotation = 4.1887903
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0
+
+[node name="Wall5" type="Line2D" parent="."]
+position = Vector2(0, 1)
+rotation = 5.2359877
+points = PackedVector2Array(-57, -31, 3, -66)
+width = 8.0

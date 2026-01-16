@@ -1,12 +1,8 @@
-extends Node2D
+extends Node
 
-var board_grid := {}
+var tile_data_map := {}
+signal board_changed
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func register_tile(coords: Vector2i, tile_data: TileDataContainer):
+	tile_data_map[coords] = tile_data
+	board_changed.emit()

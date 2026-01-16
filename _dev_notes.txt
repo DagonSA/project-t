@@ -1,0 +1,15 @@
+oh my god 
+
+No więc! 
+
+Musimy jednak set cellować 
+
+Zrobiliśmy funkcję, która przyjmuje dwa argumenty a resztę zostawia docelową
+
+Teraz trzeba: 
+	1) DONE
+	2) DONE / IN PROGRESS
+	3) po zrespieniu musi się dokonywać wpis do 'rejestru' - tile o pozycji X,Y na gridzie = się taki i taki resource
+	4) Wtedy możemy 'odpytywać' dane tajle z ich danych - do gry
+	5) WALLE -> another tilemap layer + data. Possible options, np. 4-5 patternów + rotacje:
+		tyleż nowych artów w atlasie do nałożenia na layer pierwszy (tajle) 
