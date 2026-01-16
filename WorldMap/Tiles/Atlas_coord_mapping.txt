@@ -5,5 +5,5 @@
 7,0 - Temple
 8,8 - Library
 10,7 - Heart
-0,0 - Terminus
+11,5 - Terminus
 0, 12 - Void, but with recoloring? 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HexTileData" load_steps=2 format=3 uid="uid://vm4x7ahhifnw"]
 
-[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Hex_tile_data.gd" id="1_o7hwt"]
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Tile_definition_res.gd" id="1_o7hwt"]
 
 [resource]
 script = ExtResource("1_o7hwt")

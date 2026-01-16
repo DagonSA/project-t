@@ -1,7 +1,7 @@
 
-# --- Godot-specific ---
-# Godot 4 imported assets
-.godot/imported/
+# --- Godot local/editor state ---
+.godot/
+!.godot/imported/
 
 # Godot 3 imported assets
 .import/

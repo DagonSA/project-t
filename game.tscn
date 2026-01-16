@@ -1,12 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=39 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Texture2D" uid="uid://cr8ivtmsplk1t" path="res://WorldMap/Tiles/Hex Tile Set.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_eow3j"]
 [ext_resource type="Script" uid="uid://dtjv41xbyws5a" path="res://WorldMap/Tiles/tile_map.gd" id="3_7jktm"]
 [ext_resource type="Script" uid="uid://tca3mywygoq5" path="res://Game/Spawners/tile_spawner.gd" id="3_feb5d"]
-[ext_resource type="Resource" uid="uid://dbes3nudwdjfj" path="res://WorldMap/Tiles/Resources/Terminus.tres" id="6_boyg6"]
-[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Hex_tile_data.gd" id="6_dhpj7"]
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Tile_definition_res.gd" id="6_dhpj7"]
 [ext_resource type="Resource" uid="uid://vm4x7ahhifnw" path="res://WorldMap/Tiles/Resources/Desert_A.tres" id="7_7knny"]
 [ext_resource type="Script" uid="uid://bbpdqts2ptat4" path="res://Game/Spawners/player_spawner.gd" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data.gd" id="7_lc2xo"]
@@ -35,6 +34,8 @@
 [ext_resource type="Resource" uid="uid://dp4bb5402ccon" path="res://WorldMap/Tiles/Resources/Fortress_A.tres" id="19_xex6t"]
 [ext_resource type="Resource" uid="uid://cw22fuuim0is3" path="res://WorldMap/Tiles/Resources/Fortress_B.tres" id="20_aa0lp"]
 [ext_resource type="Resource" uid="uid://dji3xn2uynpl" path="res://WorldMap/Tiles/Resources/Fortress_C.tres" id="21_iu0sx"]
+[ext_resource type="Resource" uid="uid://dbes3nudwdjfj" path="res://WorldMap/Tiles/Resources/Terminus.tres" id="22_xex6t"]
+[ext_resource type="Script" uid="uid://bufqb4ihabnc7" path="res://WorldMap/Tiles/wall_visuals.gd" id="23_aa0lp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("1_e2o6t")
@@ -246,7 +247,11 @@ tile_set = SubResource("TileSet_epypp")
 [node name="TileSpawner" type="Node" parent="Game/TileMap"]
 script = ExtResource("3_feb5d")
 tile_bag_template = Array[ExtResource("6_dhpj7")]([ExtResource("7_7knny"), ExtResource("8_082n1"), ExtResource("9_xex6t"), ExtResource("10_aa0lp"), ExtResource("11_iu0sx"), ExtResource("12_4v2jo"), ExtResource("13_l1i01"), ExtResource("14_r62pu"), ExtResource("15_klri6"), ExtResource("16_eu6ph"), ExtResource("17_edr7y"), ExtResource("18_kq12w"), ExtResource("19_xex6t"), ExtResource("19_xex6t"), ExtResource("20_aa0lp"), ExtResource("20_aa0lp"), ExtResource("21_iu0sx"), ExtResource("21_iu0sx")])
-terminus_tile = ExtResource("6_boyg6")
+terminus_data = ExtResource("22_xex6t")
+
+[node name="WallVisuals" type="Node2D" parent="Game/TileMap/TileSpawner" node_paths=PackedStringArray("tile_map")]
+script = ExtResource("23_aa0lp")
+tile_map = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 
