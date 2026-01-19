@@ -57,4 +57,5 @@ func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
 func set_selected_vis(on: bool):
 	$SelectionRing.visible = on
 	
-	
+func can_character_initiate_move() -> bool:
+	return actions > 0

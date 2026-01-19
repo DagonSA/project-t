@@ -45,3 +45,8 @@ enum SpecialType {
 	HEART,
 	NONE
 }
+
+enum TurnPhase {
+	MOVEMENT_PHASE,
+	ACTION_PHASE
+}

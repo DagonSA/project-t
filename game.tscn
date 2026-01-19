@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=40 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Texture2D" uid="uid://cr8ivtmsplk1t" path="res://WorldMap/Tiles/Hex Tile Set.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_fc0e3"]
@@ -36,6 +36,7 @@
 [ext_resource type="Resource" uid="uid://dji3xn2uynpl" path="res://WorldMap/Tiles/Resources/Fortress_C.tres" id="21_iu0sx"]
 [ext_resource type="Resource" uid="uid://dbes3nudwdjfj" path="res://WorldMap/Tiles/Resources/Terminus.tres" id="22_xex6t"]
 [ext_resource type="Script" uid="uid://bufqb4ihabnc7" path="res://WorldMap/Tiles/wall_visuals.gd" id="23_aa0lp"]
+[ext_resource type="Script" uid="uid://bud73ksxstqc7" path="res://movement_manager.gd" id="34_iu0sx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("1_e2o6t")
@@ -267,6 +268,9 @@ script = ExtResource("14_215e1")
 [node name="BoardManager" type="Node2D" parent="Game"]
 script = ExtResource("15_rvswv")
 
+[node name="MovementManager" type="Node2D" parent="Game"]
+script = ExtResource("34_iu0sx")
+
 [node name="UI Root" type="CanvasLayer" parent="."]
 
 [node name="CharacterPanel" type="Control" parent="UI Root"]
@@ -362,7 +366,7 @@ grow_vertical = 0
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("15_7sc4i")
 
-[node name="TurnOrder" type="Label" parent="UI Root/GameInfoPanel"]
+[node name="GameInfo" type="Label" parent="UI Root/GameInfoPanel"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
