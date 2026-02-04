@@ -63,7 +63,7 @@ func render_cells():
 	var tile_map = board_manager.tile_data_map
 	for tile in tile_map:
 		var atlas = tile_map[tile].tile_def_reference.atlas_coords
-		tilemap.set_cell(0, tile, 0, atlas, 0)
+		tilemap.set_cell(tile, 0, atlas, 0)
 		
 	
 # OFFSET (TileMap coords) → AXIAL (logic coords)

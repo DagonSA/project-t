@@ -35,31 +35,11 @@ func end_player_turn():
 	#probably signal for phase change as well
 	emit_signal("turn_updated", current_turn, team_label)
 	
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
-		deselect_character()
-	
-	
-func select_character(clicked_char: Node) -> void:
+func select_character(clicked_char: Node = null) -> void:
 	if selected_char == clicked_char: #If you click the same character which is selected
 		return
-	
-		#show UI panels for the characters
-	$"../../UI Root/CharacterPanel/Stats".visible = true
-	
-	#unselect previous - if any	
-	if selected_char != null:
-		selected_char.set_selected_vis(false)
-		
-	#select clicked	- show selection ring and send signal
-	clicked_char.set_selected_vis(true)
 	selected_char = clicked_char
 	emit_signal("selected_character", selected_char)
-	
-func deselect_character():
-	selected_char.set_selected_vis(false)
-	selected_char = null
-	$"../../UI Root/CharacterPanel/Stats".visible = false
 	
 func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE

@@ -4,7 +4,7 @@ extends Node
 #Also, write a spawner for monsters (but that would be easy - that depends on the event tokens)
 #The most difficult things for now - spawning CHOSEN characters. Not suitable for MVP for now
 
-@onready var tilemap = $"../TileMap"
+@onready var tilemap = $"../L0_tilemap_data"
 @onready var character = load("res://Game/Characters/character.tscn")
 @onready var tileset = tilemap.tile_set
 @export var roster: Array[CharacterData]
@@ -33,4 +33,5 @@ func spawn_start_characters(pos: Vector2i, roster: Array[CharacterData]):
 			position_global = tilemap.get_standing_pos(tile_coords, orange_slot_index)
 			orange_slot_index += 1
 		new_char.global_position = position_global
+		new_char.current_tile_grid = tile_coords
 		
