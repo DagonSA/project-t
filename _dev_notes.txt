@@ -1,15 +1,19 @@
-
+Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conversions for math only
 
 
 
 TO DO RIGHT NOW:
 	- add movement rules for eligibility of move - IN PRORGRESS:
-		replace get surrounding cells with axial calculation 
-		when that's done, continue with the movement rules in board manager 
-	- add portal moves
+		FINALLY working - now:
+			1) Add color movement
+			2) refactor code
+			3) work on visuals
+			4) Standing positions + actual movement
 	
 
-	
+	BIG POLISH:
+		1) Eventually have highlighters without borders on a field where there is range:
+				Only 'external border'. not internal one - to see availability better
 	
 	
 	

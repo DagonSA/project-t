@@ -1,3 +1,7 @@
+## Responsible for:
+## Registering spawned tiles in a tile manager
+## Initiating movement
+
 extends Node
 
 var tile_data_map := {}
@@ -29,23 +33,27 @@ func movement_initiation(selected_char: Node):
 	
 		
 func get_valid_cells(current_tile: Vector2i) -> Array[Vector2i]:
+	#get ALL neighbours and then only existing neighbours
 	var all_neighbours = HexMathHelper.get_all_neighbours(current_tile)
 	var existing_neighbours: Array[Vector2i]
 	for tile in all_neighbours:
 		if tile_data_map.has(tile):
 			existing_neighbours.append(tile)
 	var tiles_with_passage = is_there_passage(current_tile, existing_neighbours)
+	### Here we need to add color movement
 	return tiles_with_passage
 
 
 	
 func is_there_passage(current_tile: Vector2i, existing_neighbours: Array[Vector2i]) -> Array[Vector2i]:
 	var current_tile_data = tile_data_map[current_tile]
+	var current_tile_axial = HexMathHelper.offset_to_axial_odd_r(current_tile.x, current_tile.y)
 	var tiles_with_passage: Array[Vector2i] = []
 	for tile in existing_neighbours:
-		var delta = tile - current_tile
-		var direction_index = HexMathHelper.DELTA_TO_DIR[delta]
+		var neighbour_tile_axial = HexMathHelper.offset_to_axial_odd_r(tile.x, tile.y)
 		var neighbour_data = tile_data_map[tile]
+		var delta_axial = neighbour_tile_axial - current_tile_axial
+		var direction_index = HexMathHelper.AXIAL_DIRS.find(delta_axial)
 		if current_tile_data.final_wall_setup[direction_index]:
 			continue
 		if opposite_direction_passage_check(direction_index, neighbour_data):
