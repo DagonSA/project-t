@@ -2,7 +2,7 @@ extends Node2D
 
 const BLACK_WALL_THICKNESS := 4.0
 const WHITE_WALL_THICKNESS := 6.0
-@export var tile_map: TileMap
+@export var tile_map: TileMapLayer
 var tile_data: TileDataContainer 
 @onready var board_manager = $"../../../BoardManager"
 
@@ -33,7 +33,6 @@ func set_walls(coords: Vector2i, pattern: Array) ->void:
 	walls_by_cell[coords] = pattern
 	queue_redraw()
 	
-	
 func clear_walls(coords) -> void:
 	walls_by_cell.erase(coords)
 	queue_redraw()
@@ -46,7 +45,7 @@ func _draw() -> void:
 		var pattern: Array = walls_by_cell[coords]
 		if pattern == null or pattern.size() != 6:
 			continue
-			
+				
 		var center: Vector2 = tile_map.map_to_local(coords)
 		
 		#computing corners

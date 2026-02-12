@@ -15,6 +15,8 @@ var intellect: int
 var team: String
 var actions: int
 var portrait: Texture2D
+var current_tile_grid: Vector2i
+var movement_range := 1
 
 
 func _ready():
@@ -22,6 +24,7 @@ func _ready():
 	_apply_data()
 	$Texture.texture = char_data.portrait
 	_set_color(team)
+	game_mode.selected_character.connect(_on_selection_change)
 
 	
 		
@@ -49,12 +52,15 @@ func _set_color(team: String):
 		"Orange":
 			ring_tint.modulate = Color(1.0, 0.5, 0.0)
 
-
-func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx) -> void:
-	if event is InputEventMouseButton and event.is_released():
-		game_mode.select_character(self)
+func _on_selection_change(char: Node): 
+	if char == self:
+		set_selected_vis(true)
+	else:
+		set_selected_vis(false)
+		
 		
 func set_selected_vis(on: bool):
 	$SelectionRing.visible = on
 	
-	
+func can_character_initiate_move() -> bool:
+	return actions > 0

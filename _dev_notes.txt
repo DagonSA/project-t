@@ -1,15 +1,29 @@
-oh my god 
 
-No więc! 
 
-Musimy jednak set cellować 
 
-Zrobiliśmy funkcję, która przyjmuje dwa argumenty a resztę zostawia docelową
 
-Teraz trzeba: 
-	1) DONE
-	2) DONE / IN PROGRESS
-	3) po zrespieniu musi się dokonywać wpis do 'rejestru' - tile o pozycji X,Y na gridzie = się taki i taki resource
-	4) Wtedy możemy 'odpytywać' dane tajle z ich danych - do gry
-	5) WALLE -> another tilemap layer + data. Possible options, np. 4-5 patternów + rotacje:
-		tyleż nowych artów w atlasie do nałożenia na layer pierwszy (tajle) 
+TO DO RIGHT NOW:
+	- add movement rules for eligibility of move - IN PRORGRESS:
+		replace get surrounding cells with axial calculation 
+		when that's done, continue with the movement rules in board manager 
+	- add portal moves
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	To REFACTOR: 
+		1) Potential READY phase before Turn 1
+		2) Movement phase - alternate between players
+		2) Signals sending payloads instead of arguments (to bulletproof stuff)
+		3) Consider lookint at all tile-related code/spawners etc and think if we can change everything 
+		to godot grid-based stuff (instead of using axial math etc)
+		4) Move hex math to a separate helper? 
+		
+---------------------------------------------

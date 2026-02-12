@@ -8,6 +8,10 @@ func _ready() -> void:
 	game_mode.selected_character.connect(_show_stats)
 	
 func _show_stats(char: Node2D):
+	if char == null:
+		self.visible = false
+		return
+	self.visible = true
 	$SelCharName.text = char.name
 	$Attack/AttValue.text = str(char.attack)
 	$Defense/DefValue.text = str(char.defense)	
