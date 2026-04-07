@@ -50,3 +50,8 @@ enum TurnPhase {
 	MOVEMENT_PHASE,
 	ACTION_PHASE
 }
+
+enum CharacterState {
+	IDLE,
+	PREMOVE
+}

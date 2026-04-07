@@ -1,0 +1,11 @@
+Script top structure template: 
+	
+#Class Declaration
+#Signals
+#Enums local
+#Exported variables
+#Public variables
+#Private variables
+#Lifecycle methods(ready, etc)
+#Public methods
+#Private helpers

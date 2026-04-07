@@ -1,15 +1,23 @@
 Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conversions for math only
-
+Drawing arrow on potential movement might need more conditions
 
 
 TO DO RIGHT NOW:
-	- add movement rules for eligibility of move - IN PRORGRESS:
-		FINALLY working - now:
-			1) Add color movement
-			2) refactor code
-			3) work on visuals
-			4) Standing positions + actual movement
 	
+	IN PROGRESS:
+		So, we decided on hovering arrow instead, so:
+			currently we want to draw an arrow to indicate movement:
+			when hovering (input), we check for ex. movement phase, selected char etc - fail fast - and then draw hovering arrow 
+		
+		
+		Input handler detecks a click -> game mode -> gm asks movement for tile check -> if OK, gm sends ask to movement for calculation -> movement calculates starting and ending position -> saves in dictionary (that could have color in the future) -> passes to preview arrow which draws arrow
+	
+	
+	
+			2) Movement -> Create states (like idle, moving, etc) for flag check for input handler. When clicked tile, if state (from game mode) is == X, then go to the next movement phase (draw arrow)
+			3) Standing positions + actual movement
+			4) Create a diagram of what is connected to what and how (ex. movement gets signal from game mode.. etc) 
+			5) Learn about bulletproofing and potentially testing. All these (board manager != null etc)
 
 	BIG POLISH:
 		1) Eventually have highlighters without borders on a field where there is range:
@@ -29,5 +37,6 @@ TO DO RIGHT NOW:
 		3) Consider lookint at all tile-related code/spawners etc and think if we can change everything 
 		to godot grid-based stuff (instead of using axial math etc)
 		4) Move hex math to a separate helper? 
+		5) Right Now Player Spawner is asking Tilemap for positions. Refactor. 
 		
 ---------------------------------------------

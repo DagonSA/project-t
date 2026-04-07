@@ -5,7 +5,7 @@ extends VBoxContainer
 func _ready() -> void:
 		#get info from GM on selected char and pass its stats to all stat labels
 	var game_mode = get_node("/root/Main/Game/GameMode")
-	game_mode.selected_character.connect(_show_stats)
+	game_mode.sig_selected_character.connect(_show_stats)
 	
 func _show_stats(char: Node2D):
 	if char == null:

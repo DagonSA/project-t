@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=47 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://56rtiagjwtrp" path="res://WorldMap/Tiles/Highlight_tile_template_teal_border.png" id="24_36esb"]
 [ext_resource type="Script" uid="uid://ixwvd5co0d28" path="res://WorldMap/l_1_tilemap_highlight.gd" id="25_ajg3j"]
 [ext_resource type="Script" uid="uid://bbpdqts2ptat4" path="res://Game/Spawners/player_spawner.gd" id="26_045m5"]
+[ext_resource type="PackedScene" uid="uid://cfbqxjiipd7e3" path="res://Game/Characters/character.tscn" id="27_gue18"]
 [ext_resource type="Script" uid="uid://chace5ijh0p23" path="res://Game/Characters/char_data.gd" id="27_uok4p"]
 [ext_resource type="Resource" uid="uid://bxsu4g5ptyx5u" path="res://Characters/Playable/Crusader/crusader_data.tres" id="28_p13e0"]
 [ext_resource type="Resource" uid="uid://dxrs50tb3eny6" path="res://Characters/Playable/Explorer/explorer_data.tres" id="29_4y6rc"]
@@ -34,10 +35,12 @@
 [ext_resource type="Resource" uid="uid://b3u3e7wg8ibem" path="res://Characters/Playable/Sniper/sniper_data.tres" id="32_dr865"]
 [ext_resource type="Resource" uid="uid://cs2wtvr2h3eud" path="res://Characters/Playable/Warrior/warrior_data.tres" id="33_43ssr"]
 [ext_resource type="Script" uid="uid://cn6wheqtnt4at" path="res://Game/Global/game_mode.gd" id="34_nop51"]
+[ext_resource type="Script" uid="uid://eqs3dxwixebq" path="res://Game/movement.gd" id="35_5yvwu"]
 [ext_resource type="Script" uid="uid://c2xobutpjstyb" path="res://Game/Global/board_manager.gd" id="35_w8qh6"]
 [ext_resource type="Script" uid="uid://cjyc2ymblor0d" path="res://Game/Global/input_handler.gd" id="36_8xwxp"]
 [ext_resource type="Script" uid="uid://c6p3wg8u08f4e" path="res://UI/CharInfoLabel/stats.gd" id="37_pjvlu"]
 [ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="38_cul81"]
+[ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
 [ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/label_turn_over.gd" id="39_acous"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
@@ -267,18 +270,31 @@ script = ExtResource("25_ajg3j")
 
 [node name="PlayerSpawner" type="Node" parent="Game"]
 script = ExtResource("26_045m5")
+character_blueprint = ExtResource("27_gue18")
 roster = Array[ExtResource("27_uok4p")]([ExtResource("28_p13e0"), ExtResource("29_4y6rc"), ExtResource("30_y26jg"), ExtResource("31_lh5do"), ExtResource("32_dr865"), ExtResource("33_43ssr")])
 blue_spawn_tile = Vector2i(2, 0)
 orange_spawn_tile = Vector2i(0, 2)
 
-[node name="GameMode" type="Node2D" parent="Game"]
+[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement")]
 script = ExtResource("34_nop51")
+movement = NodePath("../Movement")
+
+[node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "movement_arrow")]
+script = ExtResource("35_5yvwu")
+game_mode = NodePath("../GameMode")
+movement_arrow = NodePath("../Indicators/MovementArrow")
 
 [node name="BoardManager" type="Node2D" parent="Game"]
 script = ExtResource("35_w8qh6")
 
-[node name="Input handler" type="Node2D" parent="Game"]
+[node name="Input handler" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
 script = ExtResource("36_8xwxp")
+board_manager = NodePath("../BoardManager")
+
+[node name="Indicators" type="Node2D" parent="Game"]
+
+[node name="MovementArrow" type="Line2D" parent="Game/Indicators"]
+script = ExtResource("38_wbluf")
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 

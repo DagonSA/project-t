@@ -1,19 +1,21 @@
 extends Node2D
+class_name GameMode
+
+signal turn_updated(new_turn: int, current_team: int) #info for UI
+signal phase_updated(new_phase: int) 
+signal sig_selected_character(character)
 
 const Enums = preload("res://Game/Global/enums.gd")
-
 const Team = Enums.Team
 const TurnPhase = Enums.TurnPhase
+
+@export var movement: Movement
 
 var current_phase: int
 var current_turn: int
 var current_team: int
 var alignment : String #potentially enum
 var selected_char: Node = null
-
-signal turn_updated(new_turn: int, current_team: int) #info for UI
-signal phase_updated(new_phase: int) 
-signal selected_character(character)
 
 
 func _ready() -> void:
@@ -39,11 +41,16 @@ func select_character(clicked_char: Node = null) -> void:
 	if selected_char == clicked_char: #If you click the same character which is selected
 		return
 	selected_char = clicked_char
-	emit_signal("selected_character", selected_char)
+	emit_signal("sig_selected_character", selected_char)
 	
 func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
-	
-	
-	
+func on_highlighted_tile_clicked(clicked_tile: Vector2i):
+	if selected_char.state == Enums.CharacterState.PREMOVE and movement.final_tile_set.has(clicked_tile):
+		print("yes")
+
+## pontentially toi be expanded to more than movement arrows! 	
+func on_mouse_hover(target_tile_coords: Vector2i):		
+	if selected_char != null and selected_char.state == Enums.CharacterState.PREMOVE:
+		movement.update_movement_arrow(target_tile_coords)
