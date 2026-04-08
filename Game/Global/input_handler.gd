@@ -8,17 +8,7 @@ const CLICKABLE_CHARACTERS_MASK := 1 << 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	
-func _process(delta: float) -> void:
-	check_for_mouse_hover()
-	
-## MIGHT NEED MORE CONDITIONS EVENTUALLY!	
-func check_for_mouse_hover():
-		var tile_coords = get_tile_coords()
-		game_mode.on_mouse_hover(tile_coords)
 		
-	
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		var mouse_click_world = get_global_mouse_position()
@@ -36,8 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			game_mode.select_character(character)
 		else:
 			var clicked_tile = get_tile_coords()
-			if board_manager.tile_data_map.has(clicked_tile):
-				print("checking click works")
+			game_mode.on_tile_clicked(clicked_tile)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
 		game_mode.select_character(null)
 

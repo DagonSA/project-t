@@ -1,18 +1,21 @@
 Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conversions for math only
-Drawing arrow on potential movement might need more conditions
 
 
 TO DO RIGHT NOW:
 	
 	IN PROGRESS:
-		So, we decided on hovering arrow instead, so:
-			currently we want to draw an arrow to indicate movement:
-			when hovering (input), we check for ex. movement phase, selected char etc - fail fast - and then draw hovering arrow 
-		
-		
-		Input handler detecks a click -> game mode -> gm asks movement for tile check -> if OK, gm sends ask to movement for calculation -> movement calculates starting and ending position -> saves in dictionary (that could have color in the future) -> passes to preview arrow which draws arrow
-	
-	
+
+One last thing - remove the movement arrow when clicking another tile. 
+The question is - who should tell L1 to do that? GM doesnt have connection
+Also, input handling on click input for now is only tied to movement. In the future we need to check 
+or add conditions to check (movement? just clicking tile? sth else?)
+
+Currently on movement - move character :) 
+	we need to deselect character (and therefore visuals, movements etc), move it ("animation") while blocking other stuff
+	Probably when setting the state to 'moving' the blockers can happen
+	Then we zero it's Actions 
+	And last but not least - figure out the alternate movement between players - although that might be later. 
+	We could also indicate move actions possibility with small icon or sth 
 	
 			2) Movement -> Create states (like idle, moving, etc) for flag check for input handler. When clicked tile, if state (from game mode) is == X, then go to the next movement phase (draw arrow)
 			3) Standing positions + actual movement
@@ -22,6 +25,12 @@ TO DO RIGHT NOW:
 	BIG POLISH:
 		1) Eventually have highlighters without borders on a field where there is range:
 				Only 'external border'. not internal one - to see availability better
+		2) Movement arrow - show the point, color, width, etc. Maybe even some curve
+		
+	BUGS/ISSUES:
+		1) Sometimes there's a case when clicking a tile with freshly selected character doesn't register
+		2) Check if we should split character data into base (ex. Actions: always 1) and character based (etc Strength)
+		
 	
 	
 	

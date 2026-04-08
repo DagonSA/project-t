@@ -18,6 +18,7 @@ var alignment : String #potentially enum
 var selected_char: Node = null
 
 
+
 func _ready() -> void:
 	current_phase = TurnPhase.MOVEMENT_PHASE
 	current_turn = 1
@@ -46,11 +47,9 @@ func select_character(clicked_char: Node = null) -> void:
 func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
-func on_highlighted_tile_clicked(clicked_tile: Vector2i):
-	if selected_char.state == Enums.CharacterState.PREMOVE and movement.final_tile_set.has(clicked_tile):
-		print("yes")
-
-## pontentially toi be expanded to more than movement arrows! 	
-func on_mouse_hover(target_tile_coords: Vector2i):		
+func on_tile_clicked(clicked_tile: Vector2i):
 	if selected_char != null and selected_char.state == Enums.CharacterState.PREMOVE:
-		movement.update_movement_arrow(target_tile_coords)
+		movement.on_movement_tile_clicked(clicked_tile)
+
+
+			

@@ -10,6 +10,7 @@ class_name Movement
 
 var final_tile_set: Array[Vector2i] = []
 var selected_char: Node2D
+var tile_to_move: Vector2i
 
 ##FLOW:
 ## movement_initiation --> get_valid_cells --> is_there_passage --> opposite_direction_passage_check
@@ -21,14 +22,17 @@ func _ready() -> void:
 
 ## called from GameMode signal around (de)selecting a character.
 func movement_initiation(char: Node):
+	movement_arrow.hide()
+	tilemap_highlight_L1.clear_highlight()
 	selected_char = char
 	if selected_char == null:
-		tilemap_highlight_L1.clear_highlight()
 		return
 	if not game_mode.is_movement_phase():
 		return
 	if not selected_char.can_character_initiate_move():
 		return
+		print("Actions: ", selected_char.actions)
+	print("Actions: ", selected_char.actions)
 	var current_tile = selected_char.current_tile_coords
 	final_tile_set = get_valid_cells(current_tile)
 	tilemap_highlight_L1.highlight_tiles(final_tile_set)
@@ -60,7 +64,6 @@ func is_there_passage(current_tile: Vector2i, existing_neighbours: Array[Vector2
 			continue
 		else:
 			tiles_with_passage.append(tile)
-			print(tiles_with_passage)
 	return tiles_with_passage
 	
 func opposite_direction_passage_check(direction_index: int, data: TileDataContainer) -> bool:
@@ -104,3 +107,22 @@ func update_movement_arrow(target_point: Vector2i):
 		var target_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(target_point))
 		movement_arrow.draw_movement_arrow(origin_global, target_global)
 		movement_arrow.show()
+		print("arrow")
+		
+func on_movement_tile_clicked(clicked_tile: Vector2i):
+	if final_tile_set.has(clicked_tile):
+		if tile_to_move == clicked_tile:
+			move_character(clicked_tile)
+			tile_to_move = Vector2i(-1, -1)
+		else: 
+			tile_to_move = clicked_tile
+			update_movement_arrow(clicked_tile)
+		
+func move_character(clicked_tile: Vector2i):
+	print("move")
+	movement_arrow.hide()
+	selected_char.actions = 0
+	game_mode.selected_char.state = Enums.CharacterState.MOVED
+	tilemap_highlight_L1.clear_highlight()
+	
+	##selected_char.global_position = tilemap_base_L0.get_standing_pos(clicked_tile, 0)
