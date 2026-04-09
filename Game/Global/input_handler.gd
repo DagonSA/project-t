@@ -10,6 +10,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 		
 func _unhandled_input(event: InputEvent) -> void:
+	if game_mode.character_tween_movement:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		var mouse_click_world = get_global_mouse_position()
 		var space = get_world_2d().direct_space_state

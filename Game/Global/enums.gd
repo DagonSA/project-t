@@ -54,5 +54,6 @@ enum TurnPhase {
 enum CharacterState {
 	IDLE,
 	PREMOVE,
+	MOVING,
 	MOVED
 }

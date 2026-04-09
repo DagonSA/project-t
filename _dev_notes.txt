@@ -5,11 +5,6 @@ TO DO RIGHT NOW:
 	
 	IN PROGRESS:
 
-One last thing - remove the movement arrow when clicking another tile. 
-The question is - who should tell L1 to do that? GM doesnt have connection
-Also, input handling on click input for now is only tied to movement. In the future we need to check 
-or add conditions to check (movement? just clicking tile? sth else?)
-
 Currently on movement - move character :) 
 	we need to deselect character (and therefore visuals, movements etc), move it ("animation") while blocking other stuff
 	Probably when setting the state to 'moving' the blockers can happen

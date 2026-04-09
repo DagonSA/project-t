@@ -16,6 +16,7 @@ var current_turn: int
 var current_team: int
 var alignment : String #potentially enum
 var selected_char: Node = null
+var character_tween_movement: bool
 
 
 
@@ -48,7 +49,7 @@ func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
 func on_tile_clicked(clicked_tile: Vector2i):
-	if selected_char != null and selected_char.state == Enums.CharacterState.PREMOVE:
+	if current_phase == TurnPhase.MOVEMENT_PHASE and selected_char != null and selected_char.state == Enums.CharacterState.PREMOVE:
 		movement.on_movement_tile_clicked(clicked_tile)
 
 

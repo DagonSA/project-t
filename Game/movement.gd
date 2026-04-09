@@ -110,6 +110,7 @@ func update_movement_arrow(target_point: Vector2i):
 		print("arrow")
 		
 func on_movement_tile_clicked(clicked_tile: Vector2i):
+	movement_arrow.hide()
 	if final_tile_set.has(clicked_tile):
 		if tile_to_move == clicked_tile:
 			move_character(clicked_tile)
@@ -119,10 +120,16 @@ func on_movement_tile_clicked(clicked_tile: Vector2i):
 			update_movement_arrow(clicked_tile)
 		
 func move_character(clicked_tile: Vector2i):
-	print("move")
+	game_mode.character_tween_movement = true
 	movement_arrow.hide()
-	selected_char.actions = 0
-	game_mode.selected_char.state = Enums.CharacterState.MOVED
 	tilemap_highlight_L1.clear_highlight()
+	selected_char.actions = 0
+	selected_char.state = Enums.CharacterState.MOVING
+	var movement_tween = create_tween()
+	movement_tween.tween_property(selected_char, "global_position", tilemap_base_L0.get_standing_pos(clicked_tile, 0), 2)
+	await movement_tween.finished
+	selected_char.state = Enums.CharacterState.MOVED
+	game_mode.character_tween_movement = false
+	
 	
 	##selected_char.global_position = tilemap_base_L0.get_standing_pos(clicked_tile, 0)
