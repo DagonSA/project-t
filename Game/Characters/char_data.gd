@@ -8,7 +8,7 @@ class_name CharacterData
 @export var starting_defense: int
 @export var starting_speed: int
 @export var starting_intellect: int
-@export var starting_team: String
+@export var starting_team: Enums.Team
 
 @export var portrait: Texture2D
 

@@ -11,7 +11,6 @@ starting_damage = 1
 starting_attack = 2
 starting_speed = 1
 starting_intellect = 1
-starting_team = "Blue"
 portrait = ExtResource("2_synfj")
 starting_actions = 1
 metadata/_custom_type_script = "uid://chace5ijh0p23"

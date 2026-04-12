@@ -14,7 +14,7 @@ var attack: int
 var defense: int
 var speed: int
 var intellect: int
-var team: String
+var team: Enums.Team
 var actions: int
 var portrait: Texture2D
 var current_tile_coords: Vector2i
@@ -48,11 +48,11 @@ func _apply_stats():
 	team = char_data.starting_team
 	actions = char_data.starting_actions
 	
-func _set_color(team: String):
+func _set_color(team: Enums.Team):
 	match team:
-		"Blue":
+		Enums.Team.BLUE:
 			ring_tint.modulate = Color(0.2, 0.4, 1.0)
-		"Orange":
+		Enums.Team.ORANGE:
 			ring_tint.modulate = Color(1.0, 0.5, 0.0)
 
 func _on_selection_change(char: Node): 

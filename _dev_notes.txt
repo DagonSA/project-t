@@ -7,20 +7,6 @@ TO DO RIGHT NOW:
 
 "static classes / pure data classes in GDScript — when to use static vars and funcs, 
 RefCounted vs Node vs no extends, and how that affects instantiation"
-
-	Standing formation:
-		Movement awaits tween finished -> Board_M.check formation or something 
-		BM registers current formation (which chars and from what teams are on the tile) -> 
-		BM calls/gives formation.gd info to tilemap for calculation
-		Tilemap returns positions of characters 
-		This is all done through dictionary (complex one, with divisions for the teams etc)
-		BM tells characters on its tile to set in this way
-		Check dictionary vs. payload 
-
-
-	Standing formation - right now we need to figure out a script that takes the
-	formation of character after movements, checks and sets them. So, the movement itself cannot 
-	give the mov. index. It is the clicked_tile that needs to rearrange that. 
 	
 	Movement animation
 	Alternate movement between players
@@ -30,6 +16,10 @@ RefCounted vs Node vs no extends, and how that affects instantiation"
 			3) Standing positions + actual movement
 			4) Create a diagram of what is connected to what and how (ex. movement gets signal from game mode.. etc) 
 			5) Learn about bulletproofing and potentially testing. All these (board manager != null etc)
+
+	FOR LATER:
+		Formations with multiple teams, etc. 
+		Formations on the origin tile after having more than 1 movement phase 
 
 	BIG POLISH:
 		1) Eventually have highlighters without borders on a field where there is range:

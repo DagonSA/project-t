@@ -35,8 +35,8 @@ func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
 	if team_count.size() == 1: 
 		for i in char_count:
 			var char = map[tile][i]["char"]
-			char.global_position = tilemap_base_L0.get_standing_pos_real(tile, char_count, i)
-	if team_count.size() == 2:
+			char.global_position = tilemap_base_L0.get_standing_pos(tile, char_count, i)
+	elif team_count.size() == 2:
 		print("2 team formation, pass char/teamqty")
 	else:
 		print("3 team formation, pass char/teamqty")

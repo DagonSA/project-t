@@ -19,18 +19,19 @@ func _ready() -> void: #maybe later we can expose the parameters in a "ship" vec
 	
 func spawn_start_characters(tile: Vector2i, roster: Array[CharacterData]):
 	for char_data in roster:
+		print(char_data)
 		var new_char = character_blueprint.instantiate()
 		var position_global: Vector2
 		new_char.char_data = char_data
 		add_child(new_char)
-		if new_char.team == "Blue":
+		if new_char.team == Enums.Team.BLUE:
 			tile = blue_spawn_tile
-			position_global = tilemap.get_standing_pos(tile, blue_slot_index)
+			position_global = tilemap.get_standing_pos(tile, 3, blue_slot_index)
 			blue_slot_index += 1
 		else:
 			tile = orange_spawn_tile
-			position_global = tilemap.get_standing_pos(tile, orange_slot_index)
+			position_global = tilemap.get_standing_pos(tile, 3, orange_slot_index)
 			orange_slot_index += 1
 		new_char.global_position = position_global
-		new_char.register_tile_position(tile)
+		new_char.register_tile_position(tile) 
 		
