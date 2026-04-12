@@ -5,11 +5,25 @@ TO DO RIGHT NOW:
 	
 	IN PROGRESS:
 
-Currently on movement - move character :) 
-	we need to deselect character (and therefore visuals, movements etc), move it ("animation") while blocking other stuff
-	Probably when setting the state to 'moving' the blockers can happen
-	Then we zero it's Actions 
-	And last but not least - figure out the alternate movement between players - although that might be later. 
+"static classes / pure data classes in GDScript — when to use static vars and funcs, 
+RefCounted vs Node vs no extends, and how that affects instantiation"
+
+	Standing formation:
+		Movement awaits tween finished -> Board_M.check formation or something 
+		BM registers current formation (which chars and from what teams are on the tile) -> 
+		BM calls/gives formation.gd info to tilemap for calculation
+		Tilemap returns positions of characters 
+		This is all done through dictionary (complex one, with divisions for the teams etc)
+		BM tells characters on its tile to set in this way
+		Check dictionary vs. payload 
+
+
+	Standing formation - right now we need to figure out a script that takes the
+	formation of character after movements, checks and sets them. So, the movement itself cannot 
+	give the mov. index. It is the clicked_tile that needs to rearrange that. 
+	
+	Movement animation
+	Alternate movement between players
 	We could also indicate move actions possibility with small icon or sth 
 	
 			2) Movement -> Create states (like idle, moving, etc) for flag check for input handler. When clicked tile, if state (from game mode) is == X, then go to the next movement phase (draw arrow)

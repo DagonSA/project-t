@@ -130,6 +130,6 @@ func move_character(clicked_tile: Vector2i):
 	await movement_tween.finished
 	selected_char.state = Enums.CharacterState.MOVED
 	game_mode.character_tween_movement = false
+	board_manager.formation_after_move(clicked_tile, selected_char)
 	
 	
-	##selected_char.global_position = tilemap_base_L0.get_standing_pos(clicked_tile, 0)

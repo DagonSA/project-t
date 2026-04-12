@@ -14,3 +14,8 @@ func get_standing_pos(tile_coords: Vector2i, slot_index: int) -> Vector2:
 	var local_origin := map_to_local(tile_coords)
 	var local_center := local_origin
 	return to_global(local_center) + TEAM_SOLO_POS[slot_index]
+	
+func get_standing_pos_real(tile_coords: Vector2i, char_count: int) -> Vector2:
+	var local_origin := map_to_local(tile_coords)
+	var local_center := local_origin
+	return to_global(local_center) + TileFormations.Formations[char_count]["center"][0]

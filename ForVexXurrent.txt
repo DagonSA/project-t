@@ -1,0 +1,29 @@
+Tile
+
+120×140px, pointy-top hex
+Usable offset radius: ~±50px horizontal, ~±55px vertical
+Current solo formation uses offsets relative to tile world center: [Vector2(0,-30), Vector2(-30,10), Vector2(30,10)]
+
+Formation rules
+
+Standoff axis: left vs right (vertical dividing line through tile center)
+Team A → left side (x negative), Team B → right side (x positive)
+Same team stacks vertically on their side
+Solo char on a side → centered at that side's anchor (y=0)
+Two chars [Vector2(-20, 0), Vector2(20, 0)]
+Three chars [Vector2(0, -47), Vector2(-20, 23), Vector2(20, 23)]
+Solo overall (1v0) → dead center (0,0)
+Side x anchors: ±28px (conservative, well within tile)
+Monsters treated as a team, same logic applies; 1v1v1 deferred
+
+Formations needed (player combos only)
+
+1v0, 2v0, 3v0 (solo team)
+1v1, 2v1, 1v2, 2v2, 3v1, 1v3, 3v2, 2v3, 3v3
+
+Structure plan
+
+formations.gd — static class, pure data, no scene node
+Named consts per formation (FORMATION_2V1 etc.) for readability
+FORMATION_MAP dictionary keyed by something hashable representing team composition — key format TBD
+get_standing_pos() stays on the tilemap script (owns coordinate conversion), swaps TEAM_SOLO_POS for Formations.get_offsets(type)[slot]

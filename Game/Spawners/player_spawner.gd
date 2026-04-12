@@ -24,7 +24,7 @@ func spawn_start_characters(tile: Vector2i, roster: Array[CharacterData]):
 		new_char.char_data = char_data
 		add_child(new_char)
 		if new_char.team == "Blue":
-			tile = blue_spawn_tile
+			tile = orange_spawn_tile
 			position_global = tilemap.get_standing_pos(tile, blue_slot_index)
 			blue_slot_index += 1
 		else:
