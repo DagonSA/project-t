@@ -28,17 +28,14 @@ func formation_after_move(target_tile: Vector2i, char: Node2D):
 	update_tile_formation(tile_occupation_map, target_tile)
 	
 func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
-	var char_count = map.size()
+	var char_count = map[tile].size()
 	var team_count = {}
 	for i in map[tile]:
 		team_count[i["team"]] = true
 	if team_count.size() == 1: 
 		for i in char_count:
 			var char = map[tile][i]["char"]
-			char.global_position = tilemap_base_L0.get_standing_pos_real(tile, i)
-		
-
-			
+			char.global_position = tilemap_base_L0.get_standing_pos_real(tile, char_count, i)
 	if team_count.size() == 2:
 		print("2 team formation, pass char/teamqty")
 	else:

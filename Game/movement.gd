@@ -31,7 +31,6 @@ func movement_initiation(char: Node):
 		return
 	if not selected_char.can_character_initiate_move():
 		return
-		print("Actions: ", selected_char.actions)
 	print("Actions: ", selected_char.actions)
 	var current_tile = selected_char.current_tile_coords
 	final_tile_set = get_valid_cells(current_tile)
@@ -107,7 +106,6 @@ func update_movement_arrow(target_point: Vector2i):
 		var target_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(target_point))
 		movement_arrow.draw_movement_arrow(origin_global, target_global)
 		movement_arrow.show()
-		print("arrow")
 		
 func on_movement_tile_clicked(clicked_tile: Vector2i):
 	movement_arrow.hide()
