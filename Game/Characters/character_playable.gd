@@ -35,7 +35,6 @@ func _apply_data():
 	if char_data == null:
 		return
 	_apply_stats()
-	print(team)
 	
 func _apply_stats():
 	name = char_data.display_name

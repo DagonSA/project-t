@@ -31,7 +31,8 @@ func movement_initiation(char: Node):
 		return
 	if not selected_char.can_character_initiate_move():
 		return
-	print("Actions: ", selected_char.actions)
+	if selected_char.team != game_mode.current_team:
+		return
 	var current_tile = selected_char.current_tile_coords
 	final_tile_set = get_valid_cells(current_tile)
 	tilemap_highlight_L1.highlight_tiles(final_tile_set)
@@ -130,6 +131,7 @@ func move_character(clicked_tile: Vector2i):
 	selected_char.state = Enums.CharacterState.MOVED
 	game_mode.character_tween_movement = false
 	board_manager.formation_after_move(clicked_tile, selected_char)
+	game_mode.after_character_movement_check()
 	##SET ORIGIN TILE AFTER WE DIFF BETWEEN SHIP SPAWN AND MOVEMENT
 	##board_manager.formationafter_move_origin_tile(origin_tile)
 	

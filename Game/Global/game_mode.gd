@@ -10,6 +10,7 @@ const Team = Enums.Team
 const TurnPhase = Enums.TurnPhase
 
 @export var movement: Movement
+@export var board_manager: BoardManager
 
 var current_phase: int
 var current_turn: int
@@ -25,16 +26,8 @@ func _ready() -> void:
 	current_turn = 1
 	current_team = Team.BLUE
 	
-	
-func _on_end_turn_pressed() -> void:
-	end_player_turn()
-	
 func end_player_turn():
 	current_turn += 1
-	if current_team == Team.BLUE:
-		current_team = Team.ORANGE
-	else:
-		current_team = Team.BLUE
 	var team_label = Team.keys()[current_team].capitalize()
 	#probably signal for phase change as well
 	emit_signal("turn_updated", current_turn, team_label)
@@ -55,5 +48,12 @@ func on_tile_clicked(clicked_tile: Vector2i):
 	selected_char.team == current_team):
 		movement.on_movement_tile_clicked(clicked_tile)
 
-
+func after_character_movement_check():
+	current_team = Enums.Team.BLUE if current_team == Enums.Team.ORANGE else Enums.Team.ORANGE
+	for char in board_manager.playable_character_roster:
+		if char.actions > 0:
+			return
+	
+	
+		
 			

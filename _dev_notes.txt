@@ -8,8 +8,15 @@ TO DO RIGHT NOW:
 "static classes / pure data classes in GDScript — when to use static vars and funcs, 
 RefCounted vs Node vs no extends, and how that affects instantiation"
 	
+	Right now turn/phase updated for UI info is a bit wonky
+	We need to have a "movement finished" signal, or sth similar. 
+	
+	Update UI text for current teams when movement
+	Hide/show "end turn" when movements are finished (or end movement)
+	Indicate movement actions with small icon
 	Movement animation
-	Alternate movement between players
+	Maybe - for selecting 'enemy' character the selection should be red? 
+
 	We could also indicate move actions possibility with small icon or sth 
 	
 			2) Movement -> Create states (like idle, moving, etc) for flag check for input handler. When clicked tile, if state (from game mode) is == X, then go to the next movement phase (draw arrow)

@@ -5,6 +5,7 @@ extends Node
 #The most difficult things for now - spawning CHOSEN characters. Not suitable for MVP for now
 
 @onready var tilemap = $"../L0_tilemap_data"
+@export var board_manager: BoardManager
 @export var character_blueprint: PackedScene
 @onready var tileset = tilemap.tile_set
 @export var roster: Array[CharacterData]
@@ -19,7 +20,6 @@ func _ready() -> void: #maybe later we can expose the parameters in a "ship" vec
 	
 func spawn_start_characters(tile: Vector2i, roster: Array[CharacterData]):
 	for char_data in roster:
-		print(char_data)
 		var new_char = character_blueprint.instantiate()
 		var position_global: Vector2
 		new_char.char_data = char_data
@@ -33,5 +33,7 @@ func spawn_start_characters(tile: Vector2i, roster: Array[CharacterData]):
 			position_global = tilemap.get_standing_pos(tile, 3, orange_slot_index)
 			orange_slot_index += 1
 		new_char.global_position = position_global
-		new_char.register_tile_position(tile) 
+		new_char.register_tile_position(tile)
+		board_manager.register_playable_character(new_char)
+		
 		

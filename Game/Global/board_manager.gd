@@ -3,9 +3,11 @@
 ## Initiating movement
 
 extends Node
+class_name BoardManager
 
 var tile_data_map := {}
 var tile_occupation_map : Dictionary[Vector2i, Array] = {}
+var playable_character_roster := []
 signal board_changed
 @onready var game_mode = $"../GameMode"
 @onready var tilemap_base_L0 = $"../L0_tilemap_data"
@@ -20,7 +22,7 @@ func register_tile(coords: Vector2i, tile_data: TileDataContainer):
 	tile_data_map[coords] = tile_data
 	board_changed.emit()
 	
-func formation_after_move(target_tile: Vector2i, char: Node2D):
+func formation_after_move(target_tile: Vector2i, char: Character):
 	if tile_occupation_map.has(target_tile):
 		tile_occupation_map[target_tile].append({"char": char, "team": char.team})
 	else:
@@ -40,3 +42,6 @@ func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
 		print("2 team formation, pass char/teamqty")
 	else:
 		print("3 team formation, pass char/teamqty")
+		
+func register_playable_character(character: Character):
+	playable_character_roster.append(character)

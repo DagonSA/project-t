@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=48 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="38_cul81"]
 [ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
 [ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/label_turn_over.gd" id="39_acous"]
+[ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_wbluf")
@@ -268,16 +269,18 @@ script = ExtResource("25_ajg3j")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 
-[node name="PlayerSpawner" type="Node" parent="Game"]
+[node name="PlayerSpawner" type="Node" parent="Game" node_paths=PackedStringArray("board_manager")]
 script = ExtResource("26_045m5")
+board_manager = NodePath("../BoardManager")
 character_blueprint = ExtResource("27_gue18")
 roster = Array[ExtResource("27_uok4p")]([ExtResource("28_p13e0"), ExtResource("29_4y6rc"), ExtResource("30_y26jg"), ExtResource("31_lh5do"), ExtResource("32_dr865"), ExtResource("33_43ssr")])
 blue_spawn_tile = Vector2i(2, 0)
 orange_spawn_tile = Vector2i(0, 2)
 
-[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement")]
+[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "board_manager")]
 script = ExtResource("34_nop51")
 movement = NodePath("../Movement")
+board_manager = NodePath("../BoardManager")
 
 [node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "movement_arrow")]
 script = ExtResource("35_5yvwu")
@@ -379,6 +382,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EndTurn" type="Button" parent="UI Root/GameInfoPanel"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -390,11 +394,10 @@ offset_bottom = 1303.9999
 grow_vertical = 0
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("38_cul81")
+script = ExtResource("42_03jko")
 
 [node name="GameInfo" type="Label" parent="UI Root/GameInfoPanel"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("39_acous")
-
-[connection signal="pressed" from="UI Root/GameInfoPanel/EndTurn" to="Game/GameMode" method="_on_end_turn_pressed"]
