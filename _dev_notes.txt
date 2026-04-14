@@ -8,7 +8,12 @@ TO DO RIGHT NOW:
 "static classes / pure data classes in GDScript — when to use static vars and funcs, 
 RefCounted vs Node vs no extends, and how that affects instantiation"
 	
-	Right now turn/phase updated for UI info is a bit wonky
+UI updates + 
+AFTER MOVEMENT ACTIONS! - need to find a token image
+(scout, token, passive, cards)
+We could do -> if event token, uncover token (stuff) 
+	then - give player a choice (passive, play card, basic attack) 
+
 	We need to have a "movement finished" signal, or sth similar. 
 	
 	Update UI text for current teams when movement

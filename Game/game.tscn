@@ -381,7 +381,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="EndTurn" type="Button" parent="UI Root/GameInfoPanel"]
+[node name="EndMovementPhase" type="Button" parent="UI Root/GameInfoPanel" node_paths=PackedStringArray("game_mode")]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -395,9 +395,11 @@ grow_vertical = 0
 scale = Vector2(0.2, 0.2)
 icon = ExtResource("38_cul81")
 script = ExtResource("42_03jko")
+game_mode = NodePath("../../../Game/GameMode")
 
-[node name="GameInfo" type="Label" parent="UI Root/GameInfoPanel"]
+[node name="GameInfo" type="Label" parent="UI Root/GameInfoPanel" node_paths=PackedStringArray("game_mode")]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("39_acous")
+game_mode = NodePath("../../../Game/GameMode")
