@@ -5,6 +5,14 @@ TO DO RIGHT NOW:
 	
 	IN PROGRESS:
 
+
+Oh interesting — so something is typed against Character 
+somewhere and breaks without it. 
+Worth a quick hunt to find what's actually depending on it, 
+because that'll tell you if the class name is load-bearing for type-checking, 
+or if something is doing is Character or using it as a type hint.
+
+
 "static classes / pure data classes in GDScript — when to use static vars and funcs, 
 RefCounted vs Node vs no extends, and how that affects instantiation"
 	
