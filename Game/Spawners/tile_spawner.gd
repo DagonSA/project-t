@@ -5,6 +5,8 @@ extends Node
 @onready var board_manager = $"../../BoardManager"
 @export var tile_bag_template: Array[TileDefinition] = [] #Creating an Array for Tiles to be spawned
 @export var terminus_data: TileDefinition
+@export var event_token_manager: EventTokenManager
+
 const central_tile := Vector2i(0,0) #Location of a central tile in world grid
 const terminus_atlas := Vector2i(11,5) #atlas location of central tile
 const axial_dirs := [
@@ -38,6 +40,8 @@ func _ready() -> void:
 func spawn_tile(coords: Vector2i, tile_definition: TileDefinition) -> void:
 	data_container = TileDataContainer.new()
 	data_container.tile_def_reference = tile_definition
+	event_token_manager.spawn_event_token(coords)
+	
 
 	## Decide on final wall pattern
 	var wall_pattern_index = tile_definition.base_wall_pattern

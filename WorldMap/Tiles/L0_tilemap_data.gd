@@ -10,6 +10,11 @@ const TEAM_SOLO_POS:= [
 func _ready() -> void:
 	pass # Replace with function body.
 
+func get_global_pos(tile_coords: Vector2i):
+	var local_origin := map_to_local(tile_coords)
+	var local_center := local_origin
+	return to_global(local_center)
+
 func get_standing_pos(tile_coords: Vector2i, char_count: int, i: int) -> Vector2:
 	var local_origin := map_to_local(tile_coords)
 	var local_center := local_origin

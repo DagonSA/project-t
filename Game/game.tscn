@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=50 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="38_cul81"]
 [ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
 [ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/label_turn_over.gd" id="39_acous"]
+[ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
+[ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
 [ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
@@ -254,10 +256,11 @@ use_parent_material = true
 tile_set = SubResource("TileSet_epypp")
 script = ExtResource("4_gue18")
 
-[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data"]
+[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data" node_paths=PackedStringArray("event_token_manager")]
 script = ExtResource("5_03jko")
 tile_bag_template = Array[ExtResource("6_f3e3n")]([ExtResource("7_o7qj0"), ExtResource("8_2k2t8"), ExtResource("9_i743b"), ExtResource("10_5v0bf"), ExtResource("11_stjpj"), ExtResource("12_npxor"), ExtResource("13_jjsnj"), ExtResource("14_qpxq4"), ExtResource("15_8b5yt"), ExtResource("16_5jp48"), ExtResource("17_oc234"), ExtResource("18_2rwqr"), ExtResource("19_45fv8"), ExtResource("19_45fv8"), ExtResource("20_qfp1a"), ExtResource("20_qfp1a"), ExtResource("21_6qg4p"), ExtResource("21_6qg4p")])
 terminus_data = ExtResource("22_nvo3n")
+event_token_manager = NodePath("../../ETokenManager")
 
 [node name="WallVisuals" type="Node2D" parent="Game/L0_tilemap_data/TileSpawner" node_paths=PackedStringArray("tile_map")]
 script = ExtResource("23_3kobi")
@@ -298,6 +301,11 @@ board_manager = NodePath("../BoardManager")
 
 [node name="MovementArrow" type="Line2D" parent="Game/Indicators"]
 script = ExtResource("38_wbluf")
+
+[node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap")]
+script = ExtResource("40_f3e3n")
+event_token_blueprint = ExtResource("41_o7qj0")
+tilemap = NodePath("../L0_tilemap_data")
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 
