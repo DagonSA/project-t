@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=2 format=3 uid="uid://b3fjnhxaduwlb"]
+
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Tile_definition_res.gd" id="1_yhcap"]
+
+[resource]
+script = ExtResource("1_yhcap")
+tile_id = 16
+atlas_coords = Vector2i(6, 12)
+special_type = 4
+metadata/_custom_type_script = "uid://01f3ml1pgkdv"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=54 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -22,8 +22,10 @@
 [ext_resource type="Resource" uid="uid://cw22fuuim0is3" path="res://WorldMap/Tiles/Resources/Fortress_B.tres" id="20_qfp1a"]
 [ext_resource type="Resource" uid="uid://dji3xn2uynpl" path="res://WorldMap/Tiles/Resources/Fortress_C.tres" id="21_6qg4p"]
 [ext_resource type="Resource" uid="uid://dbes3nudwdjfj" path="res://WorldMap/Tiles/Resources/Terminus.tres" id="22_nvo3n"]
+[ext_resource type="Resource" uid="uid://ski3l1sw8437" path="res://WorldMap/Tiles/Resources/Ship_Blue.tres" id="23_2k2t8"]
 [ext_resource type="Script" uid="uid://bufqb4ihabnc7" path="res://WorldMap/Tiles/wall_visuals.gd" id="23_3kobi"]
 [ext_resource type="Texture2D" uid="uid://56rtiagjwtrp" path="res://WorldMap/Tiles/Highlight_tile_template_teal_border.png" id="24_36esb"]
+[ext_resource type="Resource" uid="uid://b3fjnhxaduwlb" path="res://WorldMap/Tiles/Resources/Ship_Orange.tres" id="24_i743b"]
 [ext_resource type="Script" uid="uid://ixwvd5co0d28" path="res://WorldMap/l_1_tilemap_highlight.gd" id="25_ajg3j"]
 [ext_resource type="Script" uid="uid://bbpdqts2ptat4" path="res://Game/Spawners/player_spawner.gd" id="26_045m5"]
 [ext_resource type="PackedScene" uid="uid://cfbqxjiipd7e3" path="res://Game/Characters/character.tscn" id="27_gue18"]
@@ -45,6 +47,8 @@
 [ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
 [ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
 [ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
+[ext_resource type="Texture2D" uid="uid://ch0yb873dmqx" path="res://WorldMap/Tiles/Blue_ship_frame.png" id="42_stjpj"]
+[ext_resource type="Texture2D" uid="uid://fj7g51l3w4v1" path="res://WorldMap/Tiles/Orange_ship_frame.png" id="43_npxor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_wbluf")
@@ -256,11 +260,15 @@ use_parent_material = true
 tile_set = SubResource("TileSet_epypp")
 script = ExtResource("4_gue18")
 
-[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data" node_paths=PackedStringArray("event_token_manager")]
+[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data" node_paths=PackedStringArray("event_token_manager", "blue_ship_frame", "orange_ship_frame")]
 script = ExtResource("5_03jko")
 tile_bag_template = Array[ExtResource("6_f3e3n")]([ExtResource("7_o7qj0"), ExtResource("8_2k2t8"), ExtResource("9_i743b"), ExtResource("10_5v0bf"), ExtResource("11_stjpj"), ExtResource("12_npxor"), ExtResource("13_jjsnj"), ExtResource("14_qpxq4"), ExtResource("15_8b5yt"), ExtResource("16_5jp48"), ExtResource("17_oc234"), ExtResource("18_2rwqr"), ExtResource("19_45fv8"), ExtResource("19_45fv8"), ExtResource("20_qfp1a"), ExtResource("20_qfp1a"), ExtResource("21_6qg4p"), ExtResource("21_6qg4p")])
 terminus_data = ExtResource("22_nvo3n")
 event_token_manager = NodePath("../../ETokenManager")
+blue_ship = ExtResource("23_2k2t8")
+blue_ship_frame = NodePath("../../Indicators/BlueShipFrame")
+orange_ship = ExtResource("24_i743b")
+orange_ship_frame = NodePath("../../Indicators/OrangeShipFrame")
 
 [node name="WallVisuals" type="Node2D" parent="Game/L0_tilemap_data/TileSpawner" node_paths=PackedStringArray("tile_map")]
 script = ExtResource("23_3kobi")
@@ -277,8 +285,8 @@ script = ExtResource("26_045m5")
 board_manager = NodePath("../BoardManager")
 character_blueprint = ExtResource("27_gue18")
 roster = Array[ExtResource("27_uok4p")]([ExtResource("28_p13e0"), ExtResource("29_4y6rc"), ExtResource("30_y26jg"), ExtResource("31_lh5do"), ExtResource("32_dr865"), ExtResource("33_43ssr")])
-blue_spawn_tile = Vector2i(2, 0)
-orange_spawn_tile = Vector2i(0, 2)
+blue_spawn_tile = Vector2i(2, 1)
+orange_spawn_tile = Vector2i(0, 3)
 
 [node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "board_manager")]
 script = ExtResource("34_nop51")
@@ -301,6 +309,12 @@ board_manager = NodePath("../BoardManager")
 
 [node name="MovementArrow" type="Line2D" parent="Game/Indicators"]
 script = ExtResource("38_wbluf")
+
+[node name="BlueShipFrame" type="Sprite2D" parent="Game/Indicators"]
+texture = ExtResource("42_stjpj")
+
+[node name="OrangeShipFrame" type="Sprite2D" parent="Game/Indicators"]
+texture = ExtResource("43_npxor")
 
 [node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("40_f3e3n")

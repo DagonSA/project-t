@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TileDefinition" load_steps=2 format=3 uid="uid://ski3l1sw8437"]
+
+[ext_resource type="Script" uid="uid://01f3ml1pgkdv" path="res://WorldMap/Tiles/Tile_definition_res.gd" id="1_fy5k6"]
+
+[resource]
+script = ExtResource("1_fy5k6")
+tile_id = 16
+atlas_coords = Vector2i(9, 13)
+special_type = 4
+metadata/_custom_type_script = "uid://01f3ml1pgkdv"

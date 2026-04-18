@@ -6,6 +6,10 @@ extends Node
 @export var tile_bag_template: Array[TileDefinition] = [] #Creating an Array for Tiles to be spawned
 @export var terminus_data: TileDefinition
 @export var event_token_manager: EventTokenManager
+@export var blue_ship: TileDefinition
+@export var blue_ship_frame: Sprite2D
+@export var orange_ship: TileDefinition
+@export var orange_ship_frame: Sprite2D
 
 const central_tile := Vector2i(0,0) #Location of a central tile in world grid
 const terminus_atlas := Vector2i(11,5) #atlas location of central tile
@@ -35,22 +39,23 @@ func _ready() -> void:
 	board_manager.board_changed.connect(_on_board_changed)
 	spawn_tile(central_tile, terminus_data)
 	spawn_rings(3)
+	spawn_ships(Vector2i(2,1), blue_ship, blue_ship_frame)
+	spawn_ships(Vector2i(0,3), orange_ship, orange_ship_frame)
+	
+	
 	
 #### Functions	
 func spawn_tile(coords: Vector2i, tile_definition: TileDefinition) -> void:
 	data_container = TileDataContainer.new()
 	data_container.tile_def_reference = tile_definition
-	event_token_manager.spawn_event_token(coords)
-	
-
-	## Decide on final wall pattern
 	var wall_pattern_index = tile_definition.base_wall_pattern
 	var base_wall_pattern = wall_patterns[wall_pattern_index]
 	var rotation = randi_range(0,5)
 	var final_wall_pattern = calculate_walls(base_wall_pattern, rotation)
 	data_container.final_wall_setup = final_wall_pattern
-	board_manager.register_tile(coords, data_container) #saving to board manager
-	#Saving to board manager will signal render_cell function
+	board_manager.register_tile(coords, data_container)
+	if tile_definition.tile_id != Enums.TileID.SHIP and tile_definition.tile_id != Enums.TileID.TERMINUS:
+		event_token_manager.spawn_event_token(coords)
 	
 func _on_board_changed():
 	render_cells()	
@@ -69,7 +74,6 @@ func render_cells():
 		var atlas = tile_map[tile].tile_def_reference.atlas_coords
 		tilemap.set_cell(tile, 0, atlas, 0)
 		
-	
 # OFFSET (TileMap coords) → AXIAL (logic coords)
 func offset_to_axial_odd_r(x:int, y:int) -> Vector2i:
 	var q := x - int((y - (y & 1)) / 2)
@@ -101,8 +105,11 @@ func hex_rings(steps: int):
 				print("not enough tiles")
 				return
 			
-func draw_from_bag() -> TileDefinition: #draw one random tile from this bag
+func draw_from_bag() -> TileDefinition: 
 	var index = randi() % tile_bag.size()
 	return tile_bag.pop_at(index)		
 			
+func spawn_ships(coords: Vector2i, tile: TileDefinition, frame: Sprite2D):
+	spawn_tile(coords, tile)
+	frame.global_position = tilemap.get_global_pos(coords)
 	
