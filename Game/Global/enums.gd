@@ -27,7 +27,8 @@ enum TileID {
 	FORTRESS_A,
 	FORTRESS_B,
 	FORTRESS_C,
-	SHIP
+	SHIP_BLUE,
+	SHIP_ORANGE
 }
 
 enum TerrainType {

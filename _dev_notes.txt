@@ -3,16 +3,19 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 	
-	IN PROGRESS:
+need to figure out global pos handler
 
 
-Oh interesting — so something is typed against Character 
-somewhere and breaks without it. 
-Worth a quick hunt to find what's actually depending on it, 
-because that'll tell you if the class name is load-bearing for type-checking, 
-or if something is doing is Character or using it as a type hint.
+later - change tilemap function for global pos to some kind of separate hendler / helper 
 
-(No VBex help) - creating EventTokenManager and we';ll see
+
+
+
+
+
+
+We could also indicate move actions possibility with small icon or sth
+
 
 
 "static classes / pure data classes in GDScript — when to use static vars and funcs, 
@@ -35,10 +38,7 @@ We could do -> if event token, uncover token (stuff)
 
 	We could also indicate move actions possibility with small icon or sth 
 	
-			2) Movement -> Create states (like idle, moving, etc) for flag check for input handler. When clicked tile, if state (from game mode) is == X, then go to the next movement phase (draw arrow)
-			3) Standing positions + actual movement
-			4) Create a diagram of what is connected to what and how (ex. movement gets signal from game mode.. etc) 
-			5) Learn about bulletproofing and potentially testing. All these (board manager != null etc)
+	5) Learn about bulletproofing and potentially testing. All these (board manager != null etc)
 
 	FOR LATER:
 		Formations with multiple teams, etc. 
@@ -63,11 +63,13 @@ We could do -> if event token, uncover token (stuff)
 	
 	To REFACTOR: 
 		1) Potential READY phase before Turn 1
-		2) Movement phase - alternate between players
 		2) Signals sending payloads instead of arguments (to bulletproof stuff)
 		3) Consider lookint at all tile-related code/spawners etc and think if we can change everything 
 		to godot grid-based stuff (instead of using axial math etc)
 		4) Move hex math to a separate helper? 
 		5) Right Now Player Spawner is asking Tilemap for positions. Refactor. 
+		6) Check for Character class. It seems as something is leaning on it, and it's just a two line class
+		
+		
 		
 ---------------------------------------------

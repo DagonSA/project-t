@@ -260,11 +260,11 @@ use_parent_material = true
 tile_set = SubResource("TileSet_epypp")
 script = ExtResource("4_gue18")
 
-[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data" node_paths=PackedStringArray("event_token_manager", "blue_ship_frame", "orange_ship_frame")]
+[node name="TileSpawner" type="Node" parent="Game/L0_tilemap_data" node_paths=PackedStringArray("game_mode", "blue_ship_frame", "orange_ship_frame")]
 script = ExtResource("5_03jko")
 tile_bag_template = Array[ExtResource("6_f3e3n")]([ExtResource("7_o7qj0"), ExtResource("8_2k2t8"), ExtResource("9_i743b"), ExtResource("10_5v0bf"), ExtResource("11_stjpj"), ExtResource("12_npxor"), ExtResource("13_jjsnj"), ExtResource("14_qpxq4"), ExtResource("15_8b5yt"), ExtResource("16_5jp48"), ExtResource("17_oc234"), ExtResource("18_2rwqr"), ExtResource("19_45fv8"), ExtResource("19_45fv8"), ExtResource("20_qfp1a"), ExtResource("20_qfp1a"), ExtResource("21_6qg4p"), ExtResource("21_6qg4p")])
 terminus_data = ExtResource("22_nvo3n")
-event_token_manager = NodePath("../../ETokenManager")
+game_mode = NodePath("../../GameMode")
 blue_ship = ExtResource("23_2k2t8")
 blue_ship_frame = NodePath("../../Indicators/BlueShipFrame")
 orange_ship = ExtResource("24_i743b")
@@ -285,13 +285,14 @@ script = ExtResource("26_045m5")
 board_manager = NodePath("../BoardManager")
 character_blueprint = ExtResource("27_gue18")
 roster = Array[ExtResource("27_uok4p")]([ExtResource("28_p13e0"), ExtResource("29_4y6rc"), ExtResource("30_y26jg"), ExtResource("31_lh5do"), ExtResource("32_dr865"), ExtResource("33_43ssr")])
-blue_spawn_tile = Vector2i(2, 1)
-orange_spawn_tile = Vector2i(0, 3)
 
-[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "board_manager")]
+[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "board_manager", "tile_spawner", "player_spawner", "event_token_manager")]
 script = ExtResource("34_nop51")
 movement = NodePath("../Movement")
 board_manager = NodePath("../BoardManager")
+tile_spawner = NodePath("../L0_tilemap_data/TileSpawner")
+player_spawner = NodePath("../PlayerSpawner")
+event_token_manager = NodePath("../ETokenManager")
 
 [node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "movement_arrow")]
 script = ExtResource("35_5yvwu")
@@ -316,10 +317,11 @@ texture = ExtResource("42_stjpj")
 [node name="OrangeShipFrame" type="Sprite2D" parent="Game/Indicators"]
 texture = ExtResource("43_npxor")
 
-[node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap")]
+[node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap", "game_mode")]
 script = ExtResource("40_f3e3n")
 event_token_blueprint = ExtResource("41_o7qj0")
 tilemap = NodePath("../L0_tilemap_data")
+game_mode = NodePath("../GameMode")
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 

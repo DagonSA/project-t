@@ -1,11 +1,12 @@
 extends Node
+class_name TileSpawner
 
 
 @onready var tilemap = $".." #Access to TileMap (parent)
 @onready var board_manager = $"../../BoardManager"
 @export var tile_bag_template: Array[TileDefinition] = [] #Creating an Array for Tiles to be spawned
 @export var terminus_data: TileDefinition
-@export var event_token_manager: EventTokenManager
+@export var game_mode: GameMode
 @export var blue_ship: TileDefinition
 @export var blue_ship_frame: Sprite2D
 @export var orange_ship: TileDefinition
@@ -33,18 +34,21 @@ var wall_patterns := {
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func spawn_board():
 	tilemap = get_parent() 
 	tile_bag = tile_bag_template.duplicate()
 	board_manager.board_changed.connect(_on_board_changed)
 	spawn_tile(central_tile, terminus_data)
 	spawn_rings(3)
-	spawn_ships(Vector2i(2,1), blue_ship, blue_ship_frame)
-	spawn_ships(Vector2i(0,3), orange_ship, orange_ship_frame)
+	game_mode.board_spawned()
 	
-	
-	
-#### Functions	
+func spawn_ships():
+	var blue_ship_location = Vector2i(2,1)
+	var orange_ship_location = Vector2i(-3,-1)
+	spawn_ship(blue_ship_location, blue_ship, blue_ship_frame)
+	spawn_ship(orange_ship_location, orange_ship, orange_ship_frame)
+	game_mode.ships_spawned(blue_ship_location, orange_ship_location)
+
 func spawn_tile(coords: Vector2i, tile_definition: TileDefinition) -> void:
 	data_container = TileDataContainer.new()
 	data_container.tile_def_reference = tile_definition
@@ -54,8 +58,7 @@ func spawn_tile(coords: Vector2i, tile_definition: TileDefinition) -> void:
 	var final_wall_pattern = calculate_walls(base_wall_pattern, rotation)
 	data_container.final_wall_setup = final_wall_pattern
 	board_manager.register_tile(coords, data_container)
-	if tile_definition.tile_id != Enums.TileID.SHIP and tile_definition.tile_id != Enums.TileID.TERMINUS:
-		event_token_manager.spawn_event_token(coords)
+
 	
 func _on_board_changed():
 	render_cells()	
@@ -109,7 +112,7 @@ func draw_from_bag() -> TileDefinition:
 	var index = randi() % tile_bag.size()
 	return tile_bag.pop_at(index)		
 			
-func spawn_ships(coords: Vector2i, tile: TileDefinition, frame: Sprite2D):
+func spawn_ship(coords: Vector2i, tile: TileDefinition, frame: Sprite2D):
 	spawn_tile(coords, tile)
 	frame.global_position = tilemap.get_global_pos(coords)
 	

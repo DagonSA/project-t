@@ -1,4 +1,5 @@
 extends Node
+class_name PlayerSpawner
 
 #For the future -> set for many instances of characters (1-6)
 #Also, write a spawner for monsters (but that would be easy - that depends on the event tokens)
@@ -9,31 +10,27 @@ extends Node
 @export var character_blueprint: PackedScene
 @onready var tileset = tilemap.tile_set
 @export var roster: Array[CharacterData]
-@export var blue_spawn_tile: Vector2i
-@export var orange_spawn_tile: Vector2i
+
 var blue_slot_index = 0
 var orange_slot_index = 0
-
-func _ready() -> void: #maybe later we can expose the parameters in a "ship" vector	
-	spawn_start_characters(Vector2i(0,0),roster)
 	
-	
-func spawn_start_characters(tile: Vector2i, roster: Array[CharacterData]):
+func spawn_start_characters(blue_ship: Vector2i, orange_ship: Vector2i):
+	print("roster", roster.size())
 	for char_data in roster:
 		var new_char = character_blueprint.instantiate()
 		var position_global: Vector2
 		new_char.char_data = char_data
 		add_child(new_char)
 		if new_char.team == Enums.Team.BLUE:
-			tile = blue_spawn_tile
-			position_global = tilemap.get_standing_pos(tile, 3, blue_slot_index)
+			position_global = tilemap.get_standing_pos(blue_ship, 3, blue_slot_index)
+			new_char.register_tile_position(blue_ship)
 			blue_slot_index += 1
 		else:
-			tile = orange_spawn_tile
-			position_global = tilemap.get_standing_pos(tile, 3, orange_slot_index)
+			position_global = tilemap.get_standing_pos(orange_ship, 3, orange_slot_index)
+			new_char.register_tile_position(orange_ship)
 			orange_slot_index += 1
 		new_char.global_position = position_global
-		new_char.register_tile_position(tile)
 		board_manager.register_playable_character(new_char)
+	
 		
 		

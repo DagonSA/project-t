@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_yhcap")
-tile_id = 16
-atlas_coords = Vector2i(6, 12)
+tile_id = 17
+atlas_coords = Vector2i(6, 11)
 special_type = 4
 metadata/_custom_type_script = "uid://01f3ml1pgkdv"
