@@ -44,6 +44,7 @@ enum SpecialType {
 	LIBRARY,
 	TEMPLE,
 	HEART,
+	SHIP,
 	NONE
 }
 

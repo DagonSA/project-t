@@ -5,6 +5,7 @@ var token_id: int
 var token_type: Enums.EventTokensTypes
 var token_data: EventTokenData
 var token_heads: Texture2D
+var is_token_scouted: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _apply_data(): 

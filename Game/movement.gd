@@ -45,9 +45,12 @@ func get_valid_cells(current_tile: Vector2i) -> Array[Vector2i]:
 	for tile in all_neighbours:
 		if tile_data_map.has(tile):
 			existing_neighbours.append(tile)
-	var tiles_with_passage = is_there_passage(current_tile, existing_neighbours)
-	final_tile_set = get_tiles_color_movement(current_tile, tiles_with_passage)
-	return final_tile_set
+	if board_manager.tile_data_map[current_tile].tile_def_reference.special_type == Enums.SpecialType.SHIP:
+		return existing_neighbours
+	else:
+		var tiles_with_passage = is_there_passage(current_tile, existing_neighbours)
+		final_tile_set = get_tiles_color_movement(current_tile, tiles_with_passage)
+		return final_tile_set
 
 func is_there_passage(current_tile: Vector2i, existing_neighbours: Array[Vector2i]) -> Array[Vector2i]:
 	var current_tile_data = tile_data_map[current_tile]

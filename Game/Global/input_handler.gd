@@ -24,8 +24,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		var hits = space.intersect_point(query)
 		if hits.size() > 0:
 			var area: Area2D = hits[0].collider
-			var character = area.get_parent()
-			game_mode.select_character(character)
+			var parent_clicked = area.get_parent()
+			if parent_clicked is CharacterPlayable:
+				game_mode.select_character(parent_clicked)
 		else:
 			var clicked_tile = get_tile_coords()
 			game_mode.on_tile_clicked(clicked_tile)

@@ -2,11 +2,14 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 
 TO DO RIGHT NOW:
-	
-Trzeba sprawdzic: 
 
-	- on click token co sie dzieje
-	No i potem line of sight
+
+Zgrać assety do tokenów i: 
+	2) on hover scouted token (w ogóle można flagę jakąś włączyć, 
+	scouted/unscouted, będzie prościej! ) pokazać zwiększony asset. 
+	2) sygnal/call na scouted/unscouted? 
+	4) Scout na movemencie 
+	No i wtedy pięknie, mamy już przed nami podnoszenie tokenów! 
 	Jezeli token data itd sa OK to REFACTOR zeby nazewnictwo było wszędzie takie samo!
 
 
