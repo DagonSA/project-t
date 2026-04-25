@@ -11,10 +11,12 @@ const Team = Enums.Team
 const TurnPhase = Enums.TurnPhase
 
 @export var movement: Movement
+@export var line_of_sight: LineOfSight
 @export var board_manager: BoardManager
 @export var tile_spawner: TileSpawner
 @export var player_spawner: PlayerSpawner
 @export var event_token_manager: EventTokenManager
+
 
 var current_phase: int
 var current_turn: int
@@ -38,6 +40,7 @@ func board_spawned():
 	
 func initial_tokens_spawned():
 	tile_spawner.spawn_ships()
+
 	
 func ships_spawned(blue: Vector2i, orange: Vector2i):
 	player_spawner.spawn_start_characters(blue, orange)
@@ -70,6 +73,9 @@ func movement_phase_finished():
 	current_phase = TurnPhase.ACTION_PHASE
 	emit_signal("action_phase_started", current_turn, current_team, current_phase)
 	
+func players_spawned(blue: Vector2i, orange: Vector2i):
+	line_of_sight.reveal_tokens(blue)
+	line_of_sight.reveal_tokens(orange)
 	
 	
 		

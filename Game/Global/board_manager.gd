@@ -7,6 +7,7 @@ class_name BoardManager
 
 var tile_data_map := {}
 var tile_occupation_map : Dictionary[Vector2i, Array] = {}
+var event_token_data_map := {}
 var playable_character_roster := []
 signal board_changed
 @onready var game_mode = $"../GameMode"
@@ -21,6 +22,9 @@ func _ready() -> void:
 func register_tile(coords: Vector2i, tile_data: TileDataContainer):
 	tile_data_map[coords] = tile_data
 	board_changed.emit()
+	
+func register_token(coords: Vector2i ,token: EventToken):
+	event_token_data_map[coords] = {"token": token}
 	
 func formation_after_move(target_tile: Vector2i, char: Character):
 	if tile_occupation_map.has(target_tile):
@@ -45,3 +49,12 @@ func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
 		
 func register_playable_character(character: Character):
 	playable_character_roster.append(character)
+
+func scout_tokens(scouted_tiles: Array[Vector2i]):
+	for coords in scouted_tiles:
+		if event_token_data_map.has(coords):
+			event_token_data_map[coords]["token"].get_node("Sprite2D").texture = event_token_data_map[coords]["token"].token_heads
+			print(event_token_data_map[coords]["token"].get_node("Sprite2D").texture)
+			
+
+	

@@ -3,7 +3,13 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 	
-need to figure out global pos handler
+Trzeba sprawdzic: 
+
+	- on click token co sie dzieje
+	No i potem line of sight
+	Jezeli token data itd sa OK to REFACTOR zeby nazewnictwo było wszędzie takie samo!
+
+
 
 
 later - change tilemap function for global pos to some kind of separate hendler / helper 

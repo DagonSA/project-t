@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventTokenData" load_steps=3 format=3 uid="uid://dpbkyafhlfggi"]
+
+[ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="1_ygcy4"]
+[ext_resource type="Texture2D" uid="uid://dqr3hbs887ccy" path="res://EventTokens/Loot_Cards/Cards Token.png" id="2_clvmd"]
+
+[resource]
+script = ExtResource("1_ygcy4")
+token_type = 3
+token_heads = ExtResource("2_clvmd")
+metadata/_custom_type_script = "uid://djak2w6wt5rga"

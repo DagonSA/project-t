@@ -64,3 +64,11 @@ enum StandingFormations {
 	DOUBLE,
 	TRIPLE,
 }
+
+enum EventTokensTypes {
+	LURKER,
+	HUNTER,
+	LOOTEQ,
+	LOOTCARDS,
+	PASSAGE
+}

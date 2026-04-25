@@ -10,12 +10,12 @@ class_name PlayerSpawner
 @export var character_blueprint: PackedScene
 @onready var tileset = tilemap.tile_set
 @export var roster: Array[CharacterData]
+@export var game_mode: GameMode
 
 var blue_slot_index = 0
 var orange_slot_index = 0
 	
 func spawn_start_characters(blue_ship: Vector2i, orange_ship: Vector2i):
-	print("roster", roster.size())
 	for char_data in roster:
 		var new_char = character_blueprint.instantiate()
 		var position_global: Vector2
@@ -31,6 +31,6 @@ func spawn_start_characters(blue_ship: Vector2i, orange_ship: Vector2i):
 			orange_slot_index += 1
 		new_char.global_position = position_global
 		board_manager.register_playable_character(new_char)
-	
+	game_mode.players_spawned(blue_ship, orange_ship)
 		
 		

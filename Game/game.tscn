@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=60 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -44,11 +44,17 @@
 [ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="38_cul81"]
 [ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
 [ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/label_turn_over.gd" id="39_acous"]
+[ext_resource type="Script" uid="uid://c25im71fkkeo6" path="res://Game/line_of_sight.gd" id="39_npxor"]
 [ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
 [ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
 [ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
 [ext_resource type="Texture2D" uid="uid://ch0yb873dmqx" path="res://WorldMap/Tiles/Blue_ship_frame.png" id="42_stjpj"]
 [ext_resource type="Texture2D" uid="uid://fj7g51l3w4v1" path="res://WorldMap/Tiles/Orange_ship_frame.png" id="43_npxor"]
+[ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="47_oc234"]
+[ext_resource type="Resource" uid="uid://cqroeq20uqfvt" path="res://EventTokens/Monster_Lurker/Monster_lurker.tres" id="48_2rwqr"]
+[ext_resource type="Resource" uid="uid://dpbkyafhlfggi" path="res://EventTokens/Loot_Cards/Loot_cards.tres" id="49_45fv8"]
+[ext_resource type="Resource" uid="uid://b8rrydg3d4po3" path="res://EventTokens/Loot_Eq/Loot_eq.tres" id="50_qfp1a"]
+[ext_resource type="Resource" uid="uid://db4st0qu0ued5" path="res://EventTokens/Passage/Passage.tres" id="51_6qg4p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_wbluf")
@@ -280,15 +286,17 @@ script = ExtResource("25_ajg3j")
 
 [node name="Camera2D" type="Camera2D" parent="Game"]
 
-[node name="PlayerSpawner" type="Node" parent="Game" node_paths=PackedStringArray("board_manager")]
+[node name="PlayerSpawner" type="Node" parent="Game" node_paths=PackedStringArray("board_manager", "game_mode")]
 script = ExtResource("26_045m5")
 board_manager = NodePath("../BoardManager")
 character_blueprint = ExtResource("27_gue18")
 roster = Array[ExtResource("27_uok4p")]([ExtResource("28_p13e0"), ExtResource("29_4y6rc"), ExtResource("30_y26jg"), ExtResource("31_lh5do"), ExtResource("32_dr865"), ExtResource("33_43ssr")])
+game_mode = NodePath("../GameMode")
 
-[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "board_manager", "tile_spawner", "player_spawner", "event_token_manager")]
+[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "line_of_sight", "board_manager", "tile_spawner", "player_spawner", "event_token_manager")]
 script = ExtResource("34_nop51")
 movement = NodePath("../Movement")
+line_of_sight = NodePath("../LineOfSight")
 board_manager = NodePath("../BoardManager")
 tile_spawner = NodePath("../L0_tilemap_data/TileSpawner")
 player_spawner = NodePath("../PlayerSpawner")
@@ -298,6 +306,10 @@ event_token_manager = NodePath("../ETokenManager")
 script = ExtResource("35_5yvwu")
 game_mode = NodePath("../GameMode")
 movement_arrow = NodePath("../Indicators/MovementArrow")
+
+[node name="LineOfSight" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
+script = ExtResource("39_npxor")
+board_manager = NodePath("../BoardManager")
 
 [node name="BoardManager" type="Node2D" parent="Game"]
 script = ExtResource("35_w8qh6")
@@ -317,11 +329,13 @@ texture = ExtResource("42_stjpj")
 [node name="OrangeShipFrame" type="Sprite2D" parent="Game/Indicators"]
 texture = ExtResource("43_npxor")
 
-[node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap", "game_mode")]
+[node name="ETokenManager" type="Node2D" parent="Game" node_paths=PackedStringArray("tilemap", "game_mode", "board_manager")]
 script = ExtResource("40_f3e3n")
 event_token_blueprint = ExtResource("41_o7qj0")
 tilemap = NodePath("../L0_tilemap_data")
 game_mode = NodePath("../GameMode")
+board_manager = NodePath("../BoardManager")
+initial_tokens_to_spawn = Array[ExtResource("47_oc234")]([ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p")])
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 

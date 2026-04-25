@@ -29,7 +29,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			var clicked_tile = get_tile_coords()
 			game_mode.on_tile_clicked(clicked_tile)
-			print(clicked_tile)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
 		game_mode.select_character(null)
 
