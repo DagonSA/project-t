@@ -5,11 +5,21 @@ TO DO RIGHT NOW:
 
 
 Zgrać assety do tokenów i: 
-	2) on hover scouted token (w ogóle można flagę jakąś włączyć, 
-	scouted/unscouted, będzie prościej! ) pokazać zwiększony asset. 
-	2) sygnal/call na scouted/unscouted? 
-	4) Scout na movemencie 
-	No i wtedy pięknie, mamy już przed nami podnoszenie tokenów! 
+	
+Podnoszenie tokenów: 
+	Zrobić podklasy i wtedy one same triggerują swoje zachowanie: 
+		monster spawnuje monstera
+		eq ekwipunek itd 
+		
+		Na razie zrobimy to tylko UIowo (data cory itd)
+		+ jeden dummy monster
+		wtedy robimy fazy i sa actrion phasy itd 
+		
+Movement phase -> move, trigger, (cards - ostatnie), quick attack (formacje z przeciwnikami!)
+Action phase - > Scavenge, (cards), combat
+	
+	
+	
 	Jezeli token data itd sa OK to REFACTOR zeby nazewnictwo było wszędzie takie samo!
 
 

@@ -134,7 +134,7 @@ func move_character(clicked_tile: Vector2i):
 	selected_char.state = Enums.CharacterState.MOVED
 	game_mode.character_tween_movement = false
 	board_manager.formation_after_move(clicked_tile, selected_char)
-	game_mode.after_character_movement_check()
+	game_mode.after_character_movement_check(clicked_tile)
 
 	##Here we have all aftermoves -> Token scout, token trigger, cards, etc
 	##SET ORIGIN TILE AFTER WE DIFF BETWEEN SHIP SPAWN AND MOVEMENT

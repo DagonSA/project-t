@@ -26,6 +26,13 @@ func on_event_token_hover_enter():
 	hover_sprite.scale = Vector2(1.3, 1.3)
 	hover_sprite.show()
 	
+func reveal_token():
+	is_token_scouted = true
+	$Base_Token_Sprite.texture = token_heads
 	
 func on_event_token_hover_exit():
 	hover_sprite.hide()
+	
+func trigger_event_token():
+	print("triggered")
+	queue_free()

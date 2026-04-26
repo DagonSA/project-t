@@ -62,12 +62,11 @@ func on_tile_clicked(clicked_tile: Vector2i):
 	selected_char.team == current_team):
 		movement.on_movement_tile_clicked(clicked_tile)
 
-func after_character_movement_check():
-	current_team = Enums.Team.BLUE if current_team == Enums.Team.ORANGE else Enums.Team.ORANGE
-	for char in board_manager.playable_character_roster:
-		if char.actions > 0:
-			return
-	emit_signal("show_end_movement_button")
+func after_character_movement_check(destination_tile: Vector2i):
+	_is_token_to_trigger(destination_tile)
+	_scout_after_movement(destination_tile)
+	_check_end_of_movement_phase()
+
 	
 func movement_phase_finished(): 
 	current_phase = TurnPhase.ACTION_PHASE
@@ -77,6 +76,19 @@ func players_spawned(blue: Vector2i, orange: Vector2i):
 	line_of_sight.reveal_tokens(blue)
 	line_of_sight.reveal_tokens(orange)
 	
+func _check_end_of_movement_phase():
+	current_team = Enums.Team.BLUE if current_team == Enums.Team.ORANGE else Enums.Team.ORANGE
+	for char in board_manager.playable_character_roster:
+		if char.actions > 0:
+			return
+	emit_signal("show_end_movement_button")
 	
+func _is_token_to_trigger(tile: Vector2i):
+	var token = board_manager.get_token(tile)
+	if token != null:
+		token.trigger_event_token()
+		
+func _scout_after_movement(destination_tile: Vector2i):
+	line_of_sight.reveal_tokens(destination_tile)
 		
 			
