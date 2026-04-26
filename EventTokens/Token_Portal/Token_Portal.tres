@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventTokenData" load_steps=3 format=3 uid="uid://dmhci4s0yjxyy"]
+
+[ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="1_i88sq"]
+[ext_resource type="Texture2D" uid="uid://isie2gjckspi" path="res://EventTokens/Token_Portal/Token_Portal.png" id="2_r4x8w"]
+
+[resource]
+script = ExtResource("1_i88sq")
+token_type = 5
+token_heads = ExtResource("2_r4x8w")
+metadata/_custom_type_script = "uid://djak2w6wt5rga"

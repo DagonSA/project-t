@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b80pek45totw3"
-path="res://.godot/imported/Covered hex Token.png-972243095637d16662b194a4d4f21c9c.ctex"
+uid="uid://bp7jltwk4d8tx"
+path="res://.godot/imported/Token_Monter lurker.png-c3b9f4090f45a5866890ac43e06c89a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EventTokens/Covered hex Token.png"
-dest_files=["res://.godot/imported/Covered hex Token.png-972243095637d16662b194a4d4f21c9c.ctex"]
+source_file="res://EventTokens/Token_Monster_Lurker/Token_Monter lurker.png"
+dest_files=["res://.godot/imported/Token_Monter lurker.png-c3b9f4090f45a5866890ac43e06c89a2.ctex"]
 
 [params]
 

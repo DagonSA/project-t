@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm047luvm7u47"
-path="res://.godot/imported/Passage Token.png-2f3f738a38866c98154a86e84686b682.ctex"
+uid="uid://isie2gjckspi"
+path="res://.godot/imported/Token_Portal.png-510380d101c7f16302321670b6df0b2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EventTokens/Passage/Passage Token.png"
-dest_files=["res://.godot/imported/Passage Token.png-2f3f738a38866c98154a86e84686b682.ctex"]
+source_file="res://EventTokens/Token_Portal/Token_Portal.png"
+dest_files=["res://.godot/imported/Token_Portal.png-510380d101c7f16302321670b6df0b2e.ctex"]
 
 [params]
 

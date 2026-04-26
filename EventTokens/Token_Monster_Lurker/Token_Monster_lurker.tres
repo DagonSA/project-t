@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EventTokenData" load_steps=3 format=3 uid="uid://cqroeq20uqfvt"]
 
 [ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="1_6sw2j"]
-[ext_resource type="Texture2D" uid="uid://bbhols8efp2a2" path="res://EventTokens/Monster_Lurker/Lurker Token.png" id="2_mikdo"]
+[ext_resource type="Texture2D" uid="uid://bp7jltwk4d8tx" path="res://EventTokens/Token_Monster_Lurker/Token_Monter lurker.png" id="2_mikdo"]
 
 [resource]
 script = ExtResource("1_6sw2j")

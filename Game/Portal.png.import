@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cug0d5sax476"
-path="res://.godot/imported/EQ Token.png-bcef19f1b1495b094155ede4ef8f4610.ctex"
+uid="uid://bmjxdktj525xw"
+path="res://.godot/imported/Portal.png-a34a2a73fe9f5eb18d356f1cd8365af7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EventTokens/Loot_Eq/EQ Token.png"
-dest_files=["res://.godot/imported/EQ Token.png-bcef19f1b1495b094155ede4ef8f4610.ctex"]
+source_file="res://Game/Portal.png"
+dest_files=["res://.godot/imported/Portal.png-a34a2a73fe9f5eb18d356f1cd8365af7.ctex"]
 
 [params]
 

@@ -53,8 +53,7 @@ func register_playable_character(character: Character):
 func scout_tokens(scouted_tiles: Array[Vector2i]):
 	for coords in scouted_tiles:
 		if event_token_data_map.has(coords):
-			event_token_data_map[coords]["token"].get_node("Sprite2D").texture = event_token_data_map[coords]["token"].token_heads
-			print(event_token_data_map[coords]["token"].get_node("Sprite2D").texture)
+			event_token_data_map[coords]["token"].get_node("Base_Token_Sprite").texture = event_token_data_map[coords]["token"].token_heads
 			
 
 	

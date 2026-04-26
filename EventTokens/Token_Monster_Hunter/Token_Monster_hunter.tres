@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventTokenData" load_steps=3 format=3 uid="uid://dwoo47qrs62uv"]
+
+[ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="1_6kxwr"]
+[ext_resource type="Texture2D" uid="uid://hh1s2jxsuqvy" path="res://EventTokens/Token_Monster_Hunter/Token_Monster_hunter.png" id="2_fwatk"]
+
+[resource]
+script = ExtResource("1_6kxwr")
+token_type = 1
+token_heads = ExtResource("2_fwatk")
+metadata/_custom_type_script = "uid://djak2w6wt5rga"

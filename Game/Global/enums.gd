@@ -71,5 +71,9 @@ enum EventTokensTypes {
 	HUNTER,
 	LOOTEQ,
 	LOOTCARDS,
-	PASSAGE
+	PASSAGE,
+	PORTAL,
+	MOUNTAIN,
+	DESERT,
+	JUNGLE
 }

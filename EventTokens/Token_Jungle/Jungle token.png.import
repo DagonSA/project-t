@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbhols8efp2a2"
-path="res://.godot/imported/Lurker Token.png-0ed40c0a45f0bd569a2b7d9bf8e831eb.ctex"
+uid="uid://bwm744ttcoc0e"
+path="res://.godot/imported/Jungle token.png-8c34d835b480419afb4e537f99f7a71a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EventTokens/Monster_Lurker/Lurker Token.png"
-dest_files=["res://.godot/imported/Lurker Token.png-0ed40c0a45f0bd569a2b7d9bf8e831eb.ctex"]
+source_file="res://EventTokens/Token_Jungle/Jungle token.png"
+dest_files=["res://.godot/imported/Jungle token.png-8c34d835b480419afb4e537f99f7a71a.ctex"]
 
 [params]
 

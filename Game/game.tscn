@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=63 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -51,10 +51,13 @@
 [ext_resource type="Texture2D" uid="uid://ch0yb873dmqx" path="res://WorldMap/Tiles/Blue_ship_frame.png" id="42_stjpj"]
 [ext_resource type="Texture2D" uid="uid://fj7g51l3w4v1" path="res://WorldMap/Tiles/Orange_ship_frame.png" id="43_npxor"]
 [ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="47_oc234"]
-[ext_resource type="Resource" uid="uid://cqroeq20uqfvt" path="res://EventTokens/Monster_Lurker/Monster_lurker.tres" id="48_2rwqr"]
-[ext_resource type="Resource" uid="uid://dpbkyafhlfggi" path="res://EventTokens/Loot_Cards/Loot_cards.tres" id="49_45fv8"]
-[ext_resource type="Resource" uid="uid://b8rrydg3d4po3" path="res://EventTokens/Loot_Eq/Loot_eq.tres" id="50_qfp1a"]
-[ext_resource type="Resource" uid="uid://db4st0qu0ued5" path="res://EventTokens/Passage/Passage.tres" id="51_6qg4p"]
+[ext_resource type="Resource" uid="uid://cqroeq20uqfvt" path="res://EventTokens/Token_Monster_Lurker/Token_Monster_lurker.tres" id="48_2rwqr"]
+[ext_resource type="Resource" uid="uid://b8rrydg3d4po3" path="res://EventTokens/Token_Loot_EQ/Token_Loot_eq.tres" id="50_qfp1a"]
+[ext_resource type="Resource" uid="uid://db4st0qu0ued5" path="res://EventTokens/Token_Passage/Token_Passage.tres" id="51_6qg4p"]
+[ext_resource type="Resource" uid="uid://dmhci4s0yjxyy" path="res://EventTokens/Token_Portal/Token_Portal.tres" id="51_qfp1a"]
+[ext_resource type="Resource" uid="uid://c3xmhd62ov0km" path="res://EventTokens/Token_Desert/Token_Desert.tres" id="52_6qg4p"]
+[ext_resource type="Resource" uid="uid://1tef3r37gpho" path="res://EventTokens/Token_Jungle/Token_Jungle.tres" id="53_nvo3n"]
+[ext_resource type="Resource" uid="uid://d4hsq8lln7nfb" path="res://EventTokens/Token_Mountain/Token_Mountain.tres" id="54_3kobi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_wbluf")
@@ -335,7 +338,7 @@ event_token_blueprint = ExtResource("41_o7qj0")
 tilemap = NodePath("../L0_tilemap_data")
 game_mode = NodePath("../GameMode")
 board_manager = NodePath("../BoardManager")
-initial_tokens_to_spawn = Array[ExtResource("47_oc234")]([ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("49_45fv8"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p")])
+initial_tokens_to_spawn = Array[ExtResource("47_oc234")]([ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("50_qfp1a"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_6qg4p"), ExtResource("51_qfp1a"), ExtResource("51_qfp1a"), ExtResource("52_6qg4p"), ExtResource("52_6qg4p"), ExtResource("52_6qg4p"), ExtResource("53_nvo3n"), ExtResource("53_nvo3n"), ExtResource("53_nvo3n"), ExtResource("54_3kobi"), ExtResource("54_3kobi"), ExtResource("54_3kobi")])
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 

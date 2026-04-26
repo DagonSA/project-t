@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EventTokenData" load_steps=3 format=3 uid="uid://b8rrydg3d4po3"]
 
 [ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="1_qbtu2"]
-[ext_resource type="Texture2D" uid="uid://cug0d5sax476" path="res://EventTokens/Loot_Eq/EQ Token.png" id="2_8m5fw"]
+[ext_resource type="Texture2D" uid="uid://dni86uts2ie3n" path="res://EventTokens/Token_Loot_EQ/Token_Loot eq.png" id="2_8m5fw"]
 
 [resource]
 script = ExtResource("1_qbtu2")

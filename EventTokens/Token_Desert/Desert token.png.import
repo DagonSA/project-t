@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqr3hbs887ccy"
-path="res://.godot/imported/Cards Token.png-8a47f45ee99cec25be3fdae4561200c2.ctex"
+uid="uid://bbgtf7emcp35x"
+path="res://.godot/imported/Desert token.png-233001466dc54dec4106e45d814a32d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://EventTokens/Loot_Cards/Cards Token.png"
-dest_files=["res://.godot/imported/Cards Token.png-8a47f45ee99cec25be3fdae4561200c2.ctex"]
+source_file="res://EventTokens/Token_Desert/Desert token.png"
+dest_files=["res://.godot/imported/Desert token.png-233001466dc54dec4106e45d814a32d7.ctex"]
 
 [params]
 
