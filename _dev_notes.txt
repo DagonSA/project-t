@@ -3,8 +3,9 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
+wywalka buga, jesli probujemy zescoutowac tile, na ktorym bytl ale nie ma juz tokena 
 
-Zgrać assety do tokenów i: 
+on hover - icons, walking guy, attack etc 
 	
 Podnoszenie tokenów: 
 	Zrobić podklasy i wtedy one same triggerują swoje zachowanie: 

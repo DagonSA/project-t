@@ -3,8 +3,8 @@ class_name GameMode
 
 signal action_phase_started
 signal show_end_movement_button #info to show button
-signal current_player_updated(team) 
-signal sig_selected_character(character)
+signal game_state_changed(payload: Dictionary) 
+signal sig_selected_character(character: Character)
 
 const Enums = preload("res://Game/Global/enums.gd")
 const Team = Enums.Team
@@ -28,6 +28,7 @@ var character_tween_movement: bool
 
 
 func _ready() -> void:
+	
 	#Will probably need to add SETUP phase and others 
 	current_phase = TurnPhase.MOVEMENT_PHASE
 	current_turn = 1
@@ -65,23 +66,21 @@ func on_tile_clicked(clicked_tile: Vector2i):
 func after_character_movement_check(destination_tile: Vector2i):
 	_is_token_to_trigger(destination_tile)
 	_scout_after_movement(destination_tile)
-	_check_end_of_movement_phase()
+	_check_end_of_movement_phase_or_switch_team()
 
-	
-func movement_phase_finished(): 
-	current_phase = TurnPhase.ACTION_PHASE
-	emit_signal("action_phase_started", current_turn, current_team, current_phase)
-	
+
 func players_spawned(blue: Vector2i, orange: Vector2i):
 	line_of_sight.reveal_tokens(blue)
 	line_of_sight.reveal_tokens(orange)
 	
-func _check_end_of_movement_phase():
+func _check_end_of_movement_phase_or_switch_team():
 	current_team = Enums.Team.BLUE if current_team == Enums.Team.ORANGE else Enums.Team.ORANGE
 	for char in board_manager.playable_character_roster:
 		if char.actions > 0:
+			game_state_changed.emit(build_game_info_ui_payload())
 			return
 	emit_signal("show_end_movement_button")
+	
 	
 func _is_token_to_trigger(tile: Vector2i):
 	var token = board_manager.get_token(tile)
@@ -90,5 +89,10 @@ func _is_token_to_trigger(tile: Vector2i):
 		
 func _scout_after_movement(destination_tile: Vector2i):
 	line_of_sight.reveal_tokens(destination_tile)
+	
+func build_game_info_ui_payload() -> Dictionary:
+	var game_info_payload = {}
+	game_info_payload["current_team"] = current_team
+	return game_info_payload
 		
 			

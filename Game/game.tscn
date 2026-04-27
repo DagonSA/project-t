@@ -43,7 +43,7 @@
 [ext_resource type="Script" uid="uid://c6p3wg8u08f4e" path="res://UI/CharInfoLabel/stats.gd" id="37_pjvlu"]
 [ext_resource type="Texture2D" uid="uid://b8ge8j5se2fcm" path="res://UI/EndTurn/EndTurn.png" id="38_cul81"]
 [ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
-[ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/label_turn_over.gd" id="39_acous"]
+[ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/game_info.gd" id="39_acous"]
 [ext_resource type="Script" uid="uid://c25im71fkkeo6" path="res://Game/line_of_sight.gd" id="39_npxor"]
 [ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
 [ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
