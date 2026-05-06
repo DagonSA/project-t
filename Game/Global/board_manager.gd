@@ -23,7 +23,7 @@ func register_tile(coords: Vector2i, tile_data: TileDataContainer):
 	tile_data_map[coords] = tile_data
 	board_changed.emit()
 	
-func register_token(coords: Vector2i ,token: EventToken):
+func register_token(coords: Vector2i, token: EventToken):
 	event_token_data_map[coords] = {"token": token}
 	
 func formation_after_move(target_tile: Vector2i, char: Character):
@@ -55,8 +55,8 @@ func scout_tokens(scouted_tiles: Array[Vector2i]):
 		if event_token_data_map.has(coords):
 			event_token_data_map[coords]["token"].reveal_token()
 			
-func get_token(tile: Vector2i) -> EventToken:
-	var token = event_token_data_map[tile]["token"]
+func get_token(coords: Vector2i) -> EventToken:
+	var token = event_token_data_map[coords]["token"]
 	return token
 	
 

@@ -82,10 +82,10 @@ func _check_end_of_movement_phase_or_switch_team():
 	emit_signal("show_end_movement_button")
 	
 	
-func _is_token_to_trigger(tile: Vector2i):
-	var token = board_manager.get_token(tile)
+func _is_token_to_trigger(coords: Vector2i):
+	var token = board_manager.get_token(coords)
 	if token != null:
-		token.trigger_event_token()
+		token.trigger_event_token(coords)
 		
 func _scout_after_movement(destination_tile: Vector2i):
 	line_of_sight.reveal_tokens(destination_tile)
@@ -94,5 +94,8 @@ func build_game_info_ui_payload() -> Dictionary:
 	var game_info_payload = {}
 	game_info_payload["current_team"] = current_team
 	return game_info_payload
+	
+func spawn_monster(coords: Vector2i):
+	print("monster will spawn at", coords)
 		
 			

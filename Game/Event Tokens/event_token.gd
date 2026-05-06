@@ -6,6 +6,8 @@ var token_type: Enums.EventTokensTypes
 var token_data: EventTokenData
 var token_heads: Texture2D
 var is_token_scouted: bool = false
+@onready var game_mode = get_tree().get_first_node_in_group("game_mode")
+@onready var board_manager = get_tree().get_first_node_in_group("board_manager")
 @onready var main_sprite = $Base_Token_Sprite
 @onready var hover_sprite = $Hover_Sprite
 
@@ -33,6 +35,27 @@ func reveal_token():
 func on_event_token_hover_exit():
 	hover_sprite.hide()
 	
-func trigger_event_token():
-	print("triggered")
+func trigger_event_token(coords: Vector2i):
+	match token_type:
+		Enums.EventTokensTypes.LURKER:
+			print("LURKER")
+			game_mode.spawn_monster(coords)
+		Enums.EventTokensTypes.HUNTER:
+			print("HUNTER")
+		Enums.EventTokensTypes.LOOTEQ:
+			print("lurker")
+		Enums.EventTokensTypes.LOOTCARDS:
+			print("LOOTCARDS")
+		Enums.EventTokensTypes.PASSAGE:
+			print("PASSAGE")
+		Enums.EventTokensTypes.PORTAL:
+			print("PORTAL")
+		Enums.EventTokensTypes.MOUNTAIN:
+			print("MOUNTAIN")
+		Enums.EventTokensTypes.DESERT:
+			print("DESERT")
+		Enums.EventTokensTypes.JUNGLE:
+			print("JUNGLE")
 	queue_free()
+	board_manager.event_token_data_map.erase(coords)
+	
