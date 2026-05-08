@@ -14,7 +14,7 @@ const TurnPhase = Enums.TurnPhase
 @export var line_of_sight: LineOfSight
 @export var board_manager: BoardManager
 @export var tile_spawner: TileSpawner
-@export var player_spawner: PlayerSpawner
+@export var character_spawner: CharacterSpawner
 @export var event_token_manager: EventTokenManager
 
 
@@ -44,7 +44,7 @@ func initial_tokens_spawned():
 
 	
 func ships_spawned(blue: Vector2i, orange: Vector2i):
-	player_spawner.spawn_start_characters(blue, orange)
+	character_spawner.spawn_start_player_characters(blue, orange)
 	
 		
 func select_character(clicked_char: Node = null) -> void:
@@ -63,9 +63,10 @@ func on_tile_clicked(clicked_tile: Vector2i):
 	selected_char.team == current_team):
 		movement.on_movement_tile_clicked(clicked_tile)
 
-func after_character_movement_check(destination_tile: Vector2i):
+func after_character_movement_check(destination_tile: Vector2i, moved_char: Character):
 	_is_token_to_trigger(destination_tile)
 	_scout_after_movement(destination_tile)
+	board_manager.set_character_formation_on_tile(destination_tile, moved_char)
 	_check_end_of_movement_phase_or_switch_team()
 
 
@@ -96,6 +97,6 @@ func build_game_info_ui_payload() -> Dictionary:
 	return game_info_payload
 	
 func spawn_monster(coords: Vector2i):
-	print("monster will spawn at", coords)
+	character_spawner.spawn_monster(coords)
 		
 			

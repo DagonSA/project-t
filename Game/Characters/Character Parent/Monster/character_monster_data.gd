@@ -1,0 +1,2 @@
+extends CharacterData
+class_name CharacterMonsterData

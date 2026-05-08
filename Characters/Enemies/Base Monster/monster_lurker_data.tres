@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterMonsterData" load_steps=3 format=3 uid="uid://bq0aakj1fedvb"]
+
+[ext_resource type="Texture2D" uid="uid://ku5we0pwk67g" path="res://Characters/Enemies/Base Monster/monster_ssframe.tres" id="1_0hpx0"]
+[ext_resource type="Script" uid="uid://r8y6j4y0ko3e" path="res://Game/Characters/Character Parent/Monster/character_monster_data.gd" id="1_t4jtl"]
+
+[resource]
+script = ExtResource("1_t4jtl")
+display_name = "Sangrexi Warrior"
+starting_health = 4
+starting_damage = 1
+starting_attack = 4
+starting_defense = 1
+starting_speed = 2
+starting_team = 2
+portrait = ExtResource("1_0hpx0")
+metadata/_custom_type_script = "uid://r8y6j4y0ko3e"

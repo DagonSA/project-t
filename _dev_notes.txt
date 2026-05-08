@@ -3,18 +3,24 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
-wywalka buga, jesli probujemy zescoutowac tile, na ktorym bytl ale nie ma juz tokena 
+Staaaaaaanding formations - to test with monsters and eventually characters.
+we're adding teamsformation to Tileformation file and will check if I caan call them directly by array index, not dict
+
+
+Trigger tokens: 
+	first, monster. Create a monster subclass, instantiate, set formation
+	EQ dead last 
+	Then - cards, for now just small shapes on UI with basic text. 
+	
+	Last one - action phase, so either a scavenge - getting cards,
+	And / or fight - so we have a dice system finally, card addition, 
+	dmg, deaths, etc.
+
+
 
 on hover - icons, walking guy, attack etc 
 	
-Podnoszenie tokenów: 
-	Zrobić podklasy i wtedy one same triggerują swoje zachowanie: 
-		monster spawnuje monstera
-		eq ekwipunek itd 
-		
-		Na razie zrobimy to tylko UIowo (data cory itd)
-		+ jeden dummy monster
-		wtedy robimy fazy i sa actrion phasy itd 
+
 		
 Movement phase -> move, trigger, (cards - ostatnie), quick attack (formacje z przeciwnikami!)
 Action phase - > Scavenge, (cards), combat

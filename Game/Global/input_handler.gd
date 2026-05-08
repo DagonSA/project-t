@@ -46,7 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if hits.size() > 0:
 			var area: Area2D = hits[0].collider
 			var parent_clicked = area.get_parent()
-			if parent_clicked is CharacterPlayable:
+			if parent_clicked is Character:
 				game_mode.select_character(parent_clicked)
 		else:
 			var clicked_tile = get_tile_coords()

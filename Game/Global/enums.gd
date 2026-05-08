@@ -1,6 +1,10 @@
 extends Node
 
-enum Team {BLUE, ORANGE}
+enum Team {
+	BLUE,
+	ORANGE,
+	MONSTER
+	}
 #WallPatterns for tiles - COCOCO for ritual tiles, normal colors have 1 of each remaining
 enum WallPatterns {
 	OPEN, 
@@ -58,12 +62,6 @@ enum CharacterState {
 	PREMOVE,
 	MOVING,
 	MOVED
-}
-
-enum StandingFormations {
-	SOLO,
-	DOUBLE,
-	TRIPLE,
 }
 
 enum EventTokensTypes {

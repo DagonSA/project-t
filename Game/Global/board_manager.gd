@@ -26,7 +26,7 @@ func register_tile(coords: Vector2i, tile_data: TileDataContainer):
 func register_token(coords: Vector2i, token: EventToken):
 	event_token_data_map[coords] = {"token": token}
 	
-func formation_after_move(target_tile: Vector2i, char: Character):
+func set_character_formation_on_tile(target_tile: Vector2i, char: Character):
 	if tile_occupation_map.has(target_tile):
 		tile_occupation_map[target_tile].append({"char": char, "team": char.team})
 	else:
@@ -41,11 +41,38 @@ func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
 	if team_count.size() == 1: 
 		for i in char_count:
 			var char = map[tile][i]["char"]
-			char.global_position = tilemap_base_L0.get_standing_pos(tile, char_count, i)
+			char.global_position = get_node("../L0_tilemap_data").get_global_pos(tile) + formations.ONE_TEAM_FORMATION[char_count-1][i]
 	elif team_count.size() == 2:
-		print("2 team formation, pass char/teamqty")
-	else:
-		print("3 team formation, pass char/teamqty")
+		var has_blue: bool
+		var has_orange: bool
+		var orange_left_side = []
+		var blue_right_side = []
+		var monster_temporary = []
+		for char in map[tile]:
+			if char["team"] == Enums.Team.BLUE:
+				has_blue = true
+				blue_right_side.append(char)
+			if char["team"] == Enums.Team.ORANGE:
+				has_orange = true
+				orange_left_side.append(char)
+			if char["team"] == Enums.Team.MONSTER:
+				monster_temporary.append(char)
+		if has_blue:
+			orange_left_side.append_array(monster_temporary)
+		if has_orange:
+			blue_right_side.append_array(monster_temporary)	
+		for i in blue_right_side.size():
+			var blue_char = blue_right_side[i]["char"]
+			var global_position = tilemap_base_L0.get_global_pos(tile)
+			blue_char.global_position = global_position + Vector2(29, 0)
+			#blue_char.global_position = global_position + formations.TWO_TEAM_FORMATION[blue_right_side.size() -1][i] + formations.SIDE_BLUE_RIGHT_X
+		for i in orange_left_side.size():
+			var orange_char = orange_left_side[i]["char"]
+			var global_position = tilemap_base_L0.get_global_pos(tile)
+			orange_char.global_position = global_position + Vector2(-29, 0)
+			#orange_char.global_position = global_position + formations.TWO_TEAM_FORMATION[orange_left_side.size() -1][i] + formations.SIDE_ORANGE_LEFT_X
+		
+
 		
 func register_playable_character(character: Character):
 	playable_character_roster.append(character)
@@ -56,7 +83,7 @@ func scout_tokens(scouted_tiles: Array[Vector2i]):
 			event_token_data_map[coords]["token"].reveal_token()
 			
 func get_token(coords: Vector2i) -> EventToken:
-	var token = event_token_data_map[coords]["token"]
+	var token = event_token_data_map.get(coords, {}).get("token", null)
 	return token
 	
 

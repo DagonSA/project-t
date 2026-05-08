@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://br4vxjg7nc1uk"]
+
+[ext_resource type="PackedScene" uid="uid://cfbqxjiipd7e3" path="res://Game/Characters/Character Parent/character.tscn" id="1_83jsc"]
+[ext_resource type="Script" uid="uid://vrr42xvleipp" path="res://Game/Characters/Character Parent/Monster/character_monster.gd" id="2_4pr47"]
+
+[node name="Character" instance=ExtResource("1_83jsc")]
+script = ExtResource("2_4pr47")
