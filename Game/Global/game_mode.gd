@@ -99,4 +99,20 @@ func build_game_info_ui_payload() -> Dictionary:
 func spawn_monster(coords: Vector2i):
 	character_spawner.spawn_monster(coords)
 		
+func can_character_be_attacked(char: Character):
+	if is_enemy(char):
+		var origin_tile = selected_char.standing_tile
+		var destination_tile = char.standing_tile
+		var range = HexMathHelper.check_range_between_tiles(origin_tile, destination_tile)
+		print("origin: ", origin_tile)
+		print("destination: ", destination_tile)
+		print(range)
+		if range > 1:
+			print("out of range")
+		else:
+			print("ATTACK!")
+		
+	
+func is_enemy(char: Character) -> bool:
+	return char.team != current_team
 			

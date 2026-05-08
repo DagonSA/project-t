@@ -16,7 +16,7 @@ var speed: int
 var team: Enums.Team
 var actions: int
 var portrait: Texture2D
-var current_tile_coords: Vector2i
+var standing_tile: Vector2i
 var movement_range := 1
 var state = Enums.CharacterState.IDLE
 
@@ -68,4 +68,4 @@ func can_character_initiate_move() -> bool:
 	return actions > 0
 	
 func register_tile_position(tile: Vector2i):
-	current_tile_coords = tile
+	standing_tile = tile

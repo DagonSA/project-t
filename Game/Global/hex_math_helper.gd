@@ -32,4 +32,10 @@ static func get_all_neighbours(tile: Vector2i) -> Array[Vector2i]:
 		var returned_tile_offset = axial_to_offset_odd_r(returned_tile_axial.x, returned_tile_axial.y)
 		all_neighbours_ordered.append(returned_tile_offset)
 	return all_neighbours_ordered
+	
+static func check_range_between_tiles(origin_tile: Vector2i, destination_tile: Vector2i) -> int:
+	var dq = destination_tile.x - origin_tile.x
+	var dr = destination_tile.y - origin_tile.y
+	var range = (abs(dq) + abs(dr) + abs(dq + dr)) / 2
+	return range
 		 

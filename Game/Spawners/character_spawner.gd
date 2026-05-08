@@ -27,9 +27,9 @@ func spawn_start_player_characters(blue_ship: Vector2i, orange_ship: Vector2i):
 			new_char.register_tile_position(blue_ship)
 		else:
 			new_char.register_tile_position(orange_ship)
-		new_char.global_position = tilemap.get_global_pos(new_char.current_tile_coords)
+		new_char.global_position = tilemap.get_global_pos(new_char.standing_tile)
 		board_manager.register_playable_character(new_char)
-		board_manager.set_character_formation_on_tile(new_char.current_tile_coords, new_char)
+		board_manager.set_character_formation_on_tile(new_char.standing_tile, new_char)
 	game_mode.players_spawned(blue_ship, orange_ship)
 	
 func spawn_monster(coords: Vector2i):

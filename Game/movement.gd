@@ -33,7 +33,7 @@ func movement_initiation(char: Node):
 		return
 	if selected_char.team != game_mode.current_team:
 		return
-	var current_tile = selected_char.current_tile_coords
+	var current_tile = selected_char.standing_tile
 	final_tile_set = get_valid_cells(current_tile)
 	tilemap_highlight_L1.highlight_tiles(final_tile_set)
 	selected_char.state = Enums.CharacterState.PREMOVE
@@ -105,7 +105,7 @@ func is_same_line_axial(current_tile: Vector2i, comparing_tile: Vector2i) -> boo
 func update_movement_arrow(target_point: Vector2i):
 	movement_arrow.hide()
 	if final_tile_set.has(target_point):
-		var origin_coords = selected_char.current_tile_coords
+		var origin_coords = selected_char.standing_tile
 		var origin_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(origin_coords))
 		var target_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(target_point))
 		movement_arrow.draw_movement_arrow(origin_global, target_global)
@@ -122,7 +122,7 @@ func on_movement_tile_clicked(clicked_tile: Vector2i):
 			update_movement_arrow(clicked_tile)
 		
 func move_character(clicked_tile: Vector2i):
-	var origin_tile = selected_char.current_tile_coords
+	var origin_tile = selected_char.standing_tile
 	game_mode.character_tween_movement = true
 	movement_arrow.hide()
 	tilemap_highlight_L1.clear_highlight()

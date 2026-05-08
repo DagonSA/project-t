@@ -3,8 +3,10 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
-Staaaaaaanding formations - to test with monsters and eventually characters.
-we're adding teamsformation to Tileformation file and will check if I caan call them directly by array index, not dict
+Small touch - set the texture/sprite to mirrored for monster if it's blue
+Actually, do the same for players 
+
+
 
 
 Trigger tokens: 
