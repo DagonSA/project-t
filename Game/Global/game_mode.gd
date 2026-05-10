@@ -69,14 +69,13 @@ func after_character_movement_check(destination_tile: Vector2i, moved_char: Char
 	_is_token_to_trigger(destination_tile)
 	_scout_after_movement(destination_tile)
 	moved_char.move_actions -= 1
-	print("after trigger", moved_char.move_actions)
 	if moved_char.move_actions <= 0:
 		_check_end_of_movement_phase_or_switch_team()
 		character_locked_to_move = null
 	else:
 		character_locked_to_move = moved_char
 		movement.movement_initiation(character_locked_to_move)
-	board_manager.set_character_formation_on_tile(destination_tile, moved_char)
+	board_manager.set_formation_on_tile_entry(destination_tile, moved_char)
 	
 
 func players_spawned(blue: Vector2i, orange: Vector2i):
@@ -97,7 +96,6 @@ func _is_token_to_trigger(coords: Vector2i):
 	if token != null:
 		token.trigger_event_token(coords)
 		selected_char.move_actions = 0
-		print("after reset", selected_char.move_actions)
 		
 func _scout_after_movement(destination_tile: Vector2i):
 	line_of_sight.reveal_tokens(destination_tile)

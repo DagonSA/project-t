@@ -25,12 +25,21 @@ func register_tile(coords: Vector2i, tile_data: TileDataContainer):
 func register_token(coords: Vector2i, token: EventToken):
 	event_token_data_map[coords] = {"token": token}
 	
-func set_character_formation_on_tile(target_tile: Vector2i, char: Character):
+func set_formation_on_tile_entry(target_tile: Vector2i, char: Character):
 	if tile_occupation_map.has(target_tile):
 		tile_occupation_map[target_tile].append({"char": char, "team": char.team})
 	else:
 		tile_occupation_map[target_tile] = [{"char": char, "team": char.team}]
 	update_tile_formation(tile_occupation_map, target_tile)
+	
+func set_formation_on_tile_exit(origin_tile: Vector2i, char: Character):
+	for entry in tile_occupation_map[origin_tile]:
+		if entry["char"] == char:
+			tile_occupation_map[origin_tile].erase(entry)
+			break
+	update_tile_formation(tile_occupation_map, origin_tile)
+	
+
 	
 func update_tile_formation(map: Dictionary[Vector2i, Array], tile: Vector2i):
 	var char_count = map[tile].size()

@@ -132,6 +132,7 @@ func move_character(destination_tile: Vector2i):
 	await movement_tween.finished
 	selected_char.state = Enums.CharacterState.MOVED
 	game_mode.character_tween_movement = false
+	board_manager.set_formation_on_tile_exit(origin_tile, selected_char)
 	selected_char.register_tile_position(destination_tile)
 	game_mode.after_character_movement_check(destination_tile, selected_char)
 
