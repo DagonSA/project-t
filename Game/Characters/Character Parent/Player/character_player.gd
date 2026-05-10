@@ -6,3 +6,5 @@ var intellect: int
 func _apply_stats():
 	super()
 	intellect = char_data.starting_intellect
+	move_actions = 2
+	

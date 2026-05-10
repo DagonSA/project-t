@@ -16,6 +16,6 @@ func _show_stats(char: Node2D):
 	$Attack/AttValue.text = str(char.attack)
 	$Defense/DefValue.text = str(char.defense)	
 	$Speed/SpdValue.text = str(char.speed)
-	$Actions/ActValue.text = str(char.actions)
+	$Actions/ActValue.text = str(char.move_actions)
 	if char.has_method("intellect"):
 		$Intellect/IntValue.text = str(char.intellect)

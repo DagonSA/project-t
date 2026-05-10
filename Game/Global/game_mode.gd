@@ -24,11 +24,12 @@ var current_team: Enums.Team
 var alignment : String #potentially enum
 var selected_char: Node = null
 var character_tween_movement: bool
+var character_locked_to_move: Character = null
 
 
 
 func _ready() -> void:
-	
+	print(DisplayServer.window_get_size())
 	#Will probably need to add SETUP phase and others 
 	current_phase = TurnPhase.MOVEMENT_PHASE
 	current_turn = 1
@@ -57,18 +58,26 @@ func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
 func on_tile_clicked(clicked_tile: Vector2i):
-	if (current_phase == TurnPhase.MOVEMENT_PHASE and 
-	selected_char != null and 
-	selected_char.state == Enums.CharacterState.PREMOVE and 
-	selected_char.team == current_team):
-		movement.on_movement_tile_clicked(clicked_tile)
+	if character_locked_to_move == null or character_locked_to_move == selected_char:
+		if (current_phase == TurnPhase.MOVEMENT_PHASE and 
+		selected_char != null and 
+		selected_char.state == Enums.CharacterState.PREMOVE and 
+		selected_char.team == current_team):
+			movement.on_movement_tile_clicked(clicked_tile)
 
 func after_character_movement_check(destination_tile: Vector2i, moved_char: Character):
 	_is_token_to_trigger(destination_tile)
 	_scout_after_movement(destination_tile)
+	moved_char.move_actions -= 1
+	print("after trigger", moved_char.move_actions)
+	if moved_char.move_actions <= 0:
+		_check_end_of_movement_phase_or_switch_team()
+		character_locked_to_move = null
+	else:
+		character_locked_to_move = moved_char
+		movement.movement_initiation(character_locked_to_move)
 	board_manager.set_character_formation_on_tile(destination_tile, moved_char)
-	_check_end_of_movement_phase_or_switch_team()
-
+	
 
 func players_spawned(blue: Vector2i, orange: Vector2i):
 	line_of_sight.reveal_tokens(blue)
@@ -76,17 +85,19 @@ func players_spawned(blue: Vector2i, orange: Vector2i):
 	
 func _check_end_of_movement_phase_or_switch_team():
 	current_team = Enums.Team.BLUE if current_team == Enums.Team.ORANGE else Enums.Team.ORANGE
-	for char in board_manager.playable_character_roster:
-		if char.actions > 0:
-			game_state_changed.emit(build_game_info_ui_payload())
-			return
-	emit_signal("show_end_movement_button")
+	#for char in board_manager.playable_character_roster:
+		#if char.move_actions > 0:
+		#	game_state_changed.emit(build_game_info_ui_payload())
+		#	return
+	#emit_signal("show_end_movement_button")
 	
 	
 func _is_token_to_trigger(coords: Vector2i):
 	var token = board_manager.get_token(coords)
 	if token != null:
 		token.trigger_event_token(coords)
+		selected_char.move_actions = 0
+		print("after reset", selected_char.move_actions)
 		
 func _scout_after_movement(destination_tile: Vector2i):
 	line_of_sight.reveal_tokens(destination_tile)
@@ -104,8 +115,6 @@ func can_character_be_attacked(char: Character):
 		var origin_tile = selected_char.standing_tile
 		var destination_tile = char.standing_tile
 		var range = HexMathHelper.check_range_between_tiles(origin_tile, destination_tile)
-		print("origin: ", origin_tile)
-		print("destination: ", destination_tile)
 		print(range)
 		if range > 1:
 			print("out of range")

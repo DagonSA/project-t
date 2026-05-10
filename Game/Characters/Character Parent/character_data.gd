@@ -11,7 +11,7 @@ class_name CharacterData
 
 @export var portrait: Texture2D
 
-@export var starting_actions := 2
+@export var move_actions := 1
 
 
 # --- to be added later ---

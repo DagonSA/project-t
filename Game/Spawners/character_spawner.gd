@@ -39,6 +39,7 @@ func spawn_monster(coords: Vector2i):
 		new_monster.char_data = monster
 		add_child(new_monster)
 		position_global = tilemap.get_global_pos(coords)
+		new_monster.register_tile_position(coords)
 		board_manager.set_character_formation_on_tile(coords, new_monster)
 	
 	

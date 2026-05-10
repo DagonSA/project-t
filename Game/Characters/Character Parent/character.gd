@@ -14,7 +14,7 @@ var attack: int
 var defense: int
 var speed: int
 var team: Enums.Team
-var actions: int
+var move_actions: int
 var portrait: Texture2D
 var standing_tile: Vector2i
 var movement_range := 1
@@ -43,7 +43,6 @@ func _apply_stats():
 	defense = char_data.starting_defense
 	speed = char_data.starting_speed
 	team = char_data.starting_team
-	actions = char_data.starting_actions
 	
 func _set_color(team: Enums.Team):
 	match team:
@@ -65,7 +64,7 @@ func set_selected_vis(on: bool):
 	$SelectionRing.visible = on
 	
 func can_character_initiate_move() -> bool:
-	return actions > 0
+	return move_actions > 0
 	
 func register_tile_position(tile: Vector2i):
 	standing_tile = tile

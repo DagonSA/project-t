@@ -45,8 +45,8 @@ func spawn_board():
 func spawn_ships():
 	var blue_ship_location = Vector2i(2,1)
 	var orange_ship_location = Vector2i(-3,-1)
-	spawn_ship(blue_ship_location, blue_ship, blue_ship_frame)
-	spawn_ship(orange_ship_location, orange_ship, orange_ship_frame)
+	_spawn_ship(blue_ship_location, blue_ship, blue_ship_frame)
+	_spawn_ship(orange_ship_location, orange_ship, orange_ship_frame)
 	game_mode.ships_spawned(blue_ship_location, orange_ship_location)
 
 func spawn_tile(coords: Vector2i, tile_definition: TileDefinition) -> void:
@@ -112,7 +112,7 @@ func draw_from_bag() -> TileDefinition:
 	var index = randi() % tile_bag.size()
 	return tile_bag.pop_at(index)		
 			
-func spawn_ship(coords: Vector2i, tile: TileDefinition, frame: Sprite2D):
+func _spawn_ship(coords: Vector2i, tile: TileDefinition, frame: Sprite2D):
 	spawn_tile(coords, tile)
 	frame.global_position = tilemap.get_global_pos(coords)
 	

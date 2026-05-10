@@ -121,19 +121,19 @@ func on_movement_tile_clicked(clicked_tile: Vector2i):
 			tile_to_move = clicked_tile
 			update_movement_arrow(clicked_tile)
 		
-func move_character(clicked_tile: Vector2i):
+func move_character(destination_tile: Vector2i):
 	var origin_tile = selected_char.standing_tile
 	game_mode.character_tween_movement = true
 	movement_arrow.hide()
 	tilemap_highlight_L1.clear_highlight()
-	selected_char.actions = 0
 	selected_char.state = Enums.CharacterState.MOVING
 	var movement_tween = create_tween()
-	movement_tween.tween_property(selected_char, "global_position", tilemap_base_L0.get_global_pos(clicked_tile), 1.0)
+	movement_tween.tween_property(selected_char, "global_position", tilemap_base_L0.get_global_pos(destination_tile), 1.0)
 	await movement_tween.finished
 	selected_char.state = Enums.CharacterState.MOVED
 	game_mode.character_tween_movement = false
-	game_mode.after_character_movement_check(clicked_tile, selected_char)
+	selected_char.register_tile_position(destination_tile)
+	game_mode.after_character_movement_check(destination_tile, selected_char)
 
 	##Here we have all aftermoves -> Token scout, token trigger, cards, etc
 	##SET ORIGIN TILE AFTER WE DIFF BETWEEN SHIP SPAWN AND MOVEMENT

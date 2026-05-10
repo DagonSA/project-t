@@ -3,6 +3,10 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
+THE MONSTERS DON'T REGISTER THEIR STANDING TILE - need that for range, etc 
+
+
+
 Small touch - set the texture/sprite to mirrored for monster if it's blue
 Actually, do the same for players 
 
