@@ -43,13 +43,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		query.collision_mask = CLICKABLE_CHARACTERS_MASK
 		
 		var hits = space.intersect_point(query)
+		
 		if hits.size() > 0:
 			var area: Area2D = hits[0].collider
 			var parent_clicked = area.get_parent()
 			if parent_clicked is Character:
 				game_mode.select_character(parent_clicked)
+
 		else:
 			var clicked_tile = get_tile_coords()
+			print(clicked_tile)
 			game_mode.on_tile_clicked(clicked_tile)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_released():
 		var mouse_click_world = get_global_mouse_position()
@@ -66,7 +69,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if hits.size() > 0:
 			var area: Area2D = hits[0].collider
 			var parent_clicked = area.get_parent()
-			if parent_clicked is Character and game_mode.selected_char.team != Enums.Team.MONSTER:
+			if (parent_clicked is Character and
+			game_mode.selected_char.team != Enums.Team.MONSTER and
+			game_mode.selected_char.team != parent_clicked.team):
 				game_mode.can_character_be_attacked(parent_clicked)
 		else:
 			game_mode.deselect_reset()

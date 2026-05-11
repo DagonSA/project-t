@@ -3,6 +3,10 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
+ATTACK ARROW RESET - by calling movement initiation function.
+	Check if that can be done more elegantly 
+
+
 Note to myself:
 	Check resetting states. for now RMB has game mode reset, which deselects character and sets
 	tile_to_move to a wrong one to 'clear the slate' 
@@ -14,7 +18,7 @@ Actually, do the same for players
 
 FIGHTO! And Action phase!
 
-Attacking - work on resetting the attacking arrow first
+
 
 
 

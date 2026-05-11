@@ -59,11 +59,15 @@ func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
 func on_tile_clicked(clicked_tile: Vector2i):
+	if selected_char.state == Enums.CharacterState.PREATTACKING:
+		selected_char.state = Enums.CharacterState.IDLE
+		movement.movement_initiation(selected_char)
 	if character_locked_to_move == null or character_locked_to_move == selected_char:
 		if (current_phase == TurnPhase.MOVEMENT_PHASE and
 		selected_char != null and 
 		selected_char.state == Enums.CharacterState.PREMOVE and 
 		selected_char.team == current_team):
+			print("second")
 			movement.on_movement_tile_clicked(clicked_tile)
 
 func after_character_movement_check(destination_tile: Vector2i, moved_char: Character):

@@ -11,6 +11,7 @@ class_name Attacking
 var final_tile_set: Array[Vector2i] = []
 var selected_char: Node2D
 var tile_to_move: Vector2i
+var attacked_char: Character
 
 ##FLOW:
 ## movement_initiation --> get_valid_cells --> is_there_passage --> opposite_direction_passage_check
@@ -25,6 +26,7 @@ func attack_initiation(attacker: Character, defender: Character):
 	tilemap_highlight_L1.clear_highlight()
 	attacker.state = Enums.CharacterState.PREATTACKING
 	update_attack_arrow(attacker, defender)
+	attacked_char = defender
 
 
 func update_attack_arrow(attacker: Character, defender: Character):
