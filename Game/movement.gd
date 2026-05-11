@@ -6,7 +6,7 @@ class_name Movement
 @onready var tilemap_highlight_L1 = $"../L1_tilemap_highlight"
 @onready var board_manager = $"../BoardManager"
 @onready var tile_data_map = board_manager.tile_data_map
-@export var movement_arrow: MovementArrow
+@export var indicator_arrow: IndicatorArrow
 
 var final_tile_set: Array[Vector2i] = []
 var selected_char: Node2D
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 ## called from GameMode signal around (de)selecting a character.
 func movement_initiation(char: Node):
-	movement_arrow.hide()
+	indicator_arrow.hide()
 	tilemap_highlight_L1.clear_highlight()
 	selected_char = char
 	if selected_char == null:
@@ -103,16 +103,16 @@ func is_same_line_axial(current_tile: Vector2i, comparing_tile: Vector2i) -> boo
 		return false
 
 func update_movement_arrow(target_point: Vector2i):
-	movement_arrow.hide()
+	indicator_arrow.hide()
 	if final_tile_set.has(target_point):
 		var origin_coords = selected_char.standing_tile
 		var origin_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(origin_coords))
 		var target_global = tilemap_base_L0.to_global(tilemap_base_L0.map_to_local(target_point))
-		movement_arrow.draw_movement_arrow(origin_global, target_global)
-		movement_arrow.show()
+		indicator_arrow.draw_indicator_arrow(origin_global, target_global, Color.GREEN )
+		indicator_arrow.show()
 		
 func on_movement_tile_clicked(clicked_tile: Vector2i):
-	movement_arrow.hide()
+	indicator_arrow.hide()
 	if final_tile_set.has(clicked_tile):
 		if tile_to_move == clicked_tile:
 			move_character(clicked_tile)
@@ -124,7 +124,7 @@ func on_movement_tile_clicked(clicked_tile: Vector2i):
 func move_character(destination_tile: Vector2i):
 	var origin_tile = selected_char.standing_tile
 	game_mode.character_tween_movement = true
-	movement_arrow.hide()
+	indicator_arrow.hide()
 	tilemap_highlight_L1.clear_highlight()
 	selected_char.state = Enums.CharacterState.MOVING
 	var movement_tween = create_tween()

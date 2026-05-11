@@ -10,6 +10,7 @@ const Enums = preload("res://Game/Global/enums.gd")
 const Team = Enums.Team
 const TurnPhase = Enums.TurnPhase
 
+@export var attacking: Attacking
 @export var movement: Movement
 @export var line_of_sight: LineOfSight
 @export var board_manager: BoardManager
@@ -59,7 +60,7 @@ func is_movement_phase() -> bool:
 	
 func on_tile_clicked(clicked_tile: Vector2i):
 	if character_locked_to_move == null or character_locked_to_move == selected_char:
-		if (current_phase == TurnPhase.MOVEMENT_PHASE and 
+		if (current_phase == TurnPhase.MOVEMENT_PHASE and
 		selected_char != null and 
 		selected_char.state == Enums.CharacterState.PREMOVE and 
 		selected_char.team == current_team):
@@ -108,18 +109,23 @@ func build_game_info_ui_payload() -> Dictionary:
 func spawn_monster(coords: Vector2i):
 	character_spawner.spawn_monster(coords)
 		
-func can_character_be_attacked(char: Character):
-	if is_enemy(char):
+func can_character_be_attacked(defender: Character):
+	if selected_char.move_actions <= 0:
+		return
+	if is_enemy(defender):
 		var origin_tile = selected_char.standing_tile
-		var destination_tile = char.standing_tile
+		var destination_tile = defender.standing_tile
 		var range = HexMathHelper.check_range_between_tiles(origin_tile, destination_tile)
 		print(range)
-		if range > 1:
-			print("out of range")
-		else:
-			print("ATTACK!")
+		if range <= 1:
+			attacking.attack_initiation(selected_char, defender)
+			
 		
 	
 func is_enemy(char: Character) -> bool:
 	return char.team != current_team
 			
+func deselect_reset():
+	selected_char.state = Enums.CharacterState.IDLE
+	movement.tile_to_move = Vector2i(-1, -1)
+	select_character(null)

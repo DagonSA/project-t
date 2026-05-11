@@ -61,7 +61,8 @@ enum CharacterState {
 	IDLE,
 	PREMOVE,
 	MOVING,
-	MOVED
+	MOVED,
+	PREATTACKING
 }
 
 enum EventTokensTypes {

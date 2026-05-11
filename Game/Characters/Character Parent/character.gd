@@ -13,11 +13,11 @@ var damage: int
 var attack: int
 var defense: int
 var speed: int
+var range: int
 var team: Enums.Team
 var move_actions: int
 var portrait: Texture2D
 var standing_tile: Vector2i
-var movement_range := 1
 var state = Enums.CharacterState.IDLE
 
 
@@ -42,6 +42,7 @@ func _apply_stats():
 	attack = char_data.starting_attack
 	defense = char_data.starting_defense
 	speed = char_data.starting_speed
+	range = 1
 	team = char_data.starting_team
 	
 func _set_color(team: Enums.Team):

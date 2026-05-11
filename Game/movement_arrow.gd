@@ -1,5 +1,6 @@
-extends Node2D
-class_name MovementArrow
+extends Line2D
+class_name IndicatorArrow
 
-func draw_movement_arrow(origin: Vector2i, target: Vector2i):
-	self.points = PackedVector2Array([Vector2(origin), Vector2(target)])
+func draw_indicator_arrow(origin: Vector2i, target: Vector2i, color: Color):
+	points = PackedVector2Array([Vector2(origin), Vector2(target)])
+	default_color = color

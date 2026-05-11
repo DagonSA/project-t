@@ -67,7 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if parent_clicked is Character:
 				game_mode.can_character_be_attacked(parent_clicked)
 		else:
-			game_mode.select_character(null)
+			game_mode.deselect_reset()
 
 func get_tile_coords() -> Vector2i:
 	var mouse_world_pos := get_global_mouse_position()

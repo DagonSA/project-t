@@ -3,12 +3,16 @@ Tile Coordinate System - Offset odd-r as a tilemap source of truth, axial conver
 
 TO DO RIGHT NOW:
 
-THE MONSTERS DON'T REGISTER THEIR STANDING TILE - need that for range, etc 
-
-
+Note to myself:
+	Check resetting states. for now RMB has game mode reset, which deselects character and sets
+	tile_to_move to a wrong one to 'clear the slate' 
+	Question - can we do it more elegantly?
+	Question - are there more things that need to be in the deselect function? 
 
 Small touch - set the texture/sprite to mirrored for monster if it's blue
 Actually, do the same for players 
+
+FIGHTO! And Action phase!
 
 
 

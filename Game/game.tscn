@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=60 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -38,7 +38,6 @@
 [ext_resource type="Resource" uid="uid://b3u3e7wg8ibem" path="res://Characters/Player/Sniper/sniper_data.tres" id="32_dr865"]
 [ext_resource type="Resource" uid="uid://cs2wtvr2h3eud" path="res://Characters/Player/Warrior/warrior_data.tres" id="33_43ssr"]
 [ext_resource type="Script" uid="uid://cn6wheqtnt4at" path="res://Game/Global/game_mode.gd" id="34_nop51"]
-[ext_resource type="Script" uid="uid://eqs3dxwixebq" path="res://Game/movement.gd" id="35_5yvwu"]
 [ext_resource type="Script" uid="uid://c2xobutpjstyb" path="res://Game/Global/board_manager.gd" id="35_w8qh6"]
 [ext_resource type="Script" uid="uid://cjyc2ymblor0d" path="res://Game/Global/input_handler.gd" id="36_8xwxp"]
 [ext_resource type="Resource" uid="uid://bq0aakj1fedvb" path="res://Characters/Enemies/Base Monster/monster_lurker_data.tres" id="37_6qg4p"]
@@ -47,7 +46,9 @@
 [ext_resource type="Script" uid="uid://b3h236f6yfiq0" path="res://Game/movement_arrow.gd" id="38_wbluf"]
 [ext_resource type="Script" uid="uid://cusjk826moyc1" path="res://UI/game_info.gd" id="39_acous"]
 [ext_resource type="Script" uid="uid://c25im71fkkeo6" path="res://Game/line_of_sight.gd" id="39_npxor"]
+[ext_resource type="Script" uid="uid://bwp5yalolfijg" path="res://Game/attacking.gd" id="40_5jp48"]
 [ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
+[ext_resource type="Script" uid="uid://eqs3dxwixebq" path="res://Game/movement.gd" id="40_oc234"]
 [ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
 [ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
 [ext_resource type="Texture2D" uid="uid://ch0yb873dmqx" path="res://WorldMap/Tiles/Blue_ship_frame.png" id="42_stjpj"]
@@ -294,8 +295,9 @@ player_roster = Array[ExtResource("30_qfp1a")]([ExtResource("28_p13e0"), ExtReso
 monster = ExtResource("37_6qg4p")
 game_mode = NodePath("../GameMode")
 
-[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("movement", "line_of_sight", "board_manager", "tile_spawner", "character_spawner", "event_token_manager") groups=["game_mode"]]
+[node name="GameMode" type="Node2D" parent="Game" node_paths=PackedStringArray("attacking", "movement", "line_of_sight", "board_manager", "tile_spawner", "character_spawner", "event_token_manager") groups=["game_mode"]]
 script = ExtResource("34_nop51")
+attacking = NodePath("../Attacking")
 movement = NodePath("../Movement")
 line_of_sight = NodePath("../LineOfSight")
 board_manager = NodePath("../BoardManager")
@@ -303,10 +305,15 @@ tile_spawner = NodePath("../L0_tilemap_data/TileSpawner")
 character_spawner = NodePath("../CharacterSpawner")
 event_token_manager = NodePath("../ETokenManager")
 
-[node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "movement_arrow")]
-script = ExtResource("35_5yvwu")
+[node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow")]
+script = ExtResource("40_oc234")
 game_mode = NodePath("../GameMode")
-movement_arrow = NodePath("../Indicators/MovementArrow")
+indicator_arrow = NodePath("../Indicators/IndicatorArrow")
+
+[node name="Attacking" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow")]
+script = ExtResource("40_5jp48")
+game_mode = NodePath("../GameMode")
+indicator_arrow = NodePath("../Indicators/IndicatorArrow")
 
 [node name="LineOfSight" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
 script = ExtResource("39_npxor")
@@ -321,7 +328,7 @@ board_manager = NodePath("../BoardManager")
 
 [node name="Indicators" type="Node2D" parent="Game"]
 
-[node name="MovementArrow" type="Line2D" parent="Game/Indicators"]
+[node name="IndicatorArrow" type="Line2D" parent="Game/Indicators"]
 script = ExtResource("38_wbluf")
 
 [node name="BlueShipFrame" type="Sprite2D" parent="Game/Indicators"]
