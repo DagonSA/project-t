@@ -61,10 +61,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		query.collision_mask = CLICKABLE_CHARACTERS_MASK
 		
 		var hits = space.intersect_point(query)
+		if game_mode.selected_char == null:
+			return
 		if hits.size() > 0:
 			var area: Area2D = hits[0].collider
 			var parent_clicked = area.get_parent()
-			if parent_clicked is Character:
+			if parent_clicked is Character and game_mode.selected_char.team != Enums.Team.MONSTER:
 				game_mode.can_character_be_attacked(parent_clicked)
 		else:
 			game_mode.deselect_reset()
