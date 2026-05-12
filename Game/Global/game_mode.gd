@@ -26,6 +26,7 @@ var alignment : String #potentially enum
 var selected_char: Node = null
 var character_tween_movement: bool
 var character_locked_to_move: Character = null
+var targeted_character: Character = null
 
 
 
@@ -61,7 +62,9 @@ func is_movement_phase() -> bool:
 func on_tile_clicked(clicked_tile: Vector2i):
 	if selected_char.state == Enums.CharacterState.PREATTACKING:
 		selected_char.state = Enums.CharacterState.IDLE
+		targeted_character = null
 		movement.movement_initiation(selected_char)
+		return
 	if character_locked_to_move == null or character_locked_to_move == selected_char:
 		if (current_phase == TurnPhase.MOVEMENT_PHASE and
 		selected_char != null and 
