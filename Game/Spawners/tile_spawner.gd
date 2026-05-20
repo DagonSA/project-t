@@ -35,7 +35,6 @@ var wall_patterns := {
 
 # Called when the node enters the scene tree for the first time.
 func spawn_board():
-	tilemap = get_parent() 
 	tile_bag = tile_bag_template.duplicate()
 	board_manager.board_changed.connect(_on_board_changed)
 	spawn_tile(central_tile, terminus_data)

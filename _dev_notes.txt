@@ -21,7 +21,7 @@ FIGHTO! And Action phase!
 
 
 
-
+Eventually camera movement to remnaining characters with actions or that players ship
 
 Trigger tokens: 
 	first, monster. Create a monster subclass, instantiate, set formation
