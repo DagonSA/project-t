@@ -315,6 +315,10 @@ script = ExtResource("40_5jp48")
 game_mode = NodePath("../GameMode")
 indicator_arrow = NodePath("../Indicators/IndicatorArrow")
 
+[node name="Attack_result_img" type="Sprite2D" parent="Game/Attacking"]
+z_index = 5
+scale = Vector2(0.3, 0.3)
+
 [node name="LineOfSight" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
 script = ExtResource("39_npxor")
 board_manager = NodePath("../BoardManager")
@@ -322,9 +326,10 @@ board_manager = NodePath("../BoardManager")
 [node name="BoardManager" type="Node2D" parent="Game" groups=["board_manager"]]
 script = ExtResource("35_w8qh6")
 
-[node name="Input handler" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
+[node name="Input handler" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager", "attacking")]
 script = ExtResource("36_8xwxp")
 board_manager = NodePath("../BoardManager")
+attacking = NodePath("../Attacking")
 
 [node name="Indicators" type="Node2D" parent="Game"]
 

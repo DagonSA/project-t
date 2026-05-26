@@ -76,3 +76,23 @@ enum EventTokensTypes {
 	DESERT,
 	JUNGLE
 }
+
+enum AttackRangeType {
+	MELEE,
+	RANGED
+}
+
+enum AttackDiceAdvantage {
+	NONE,
+	ONE,
+	TWO,
+	THREE_OR_MORE
+}
+
+enum DiceSides {
+	MISS,
+	WEAK_HIT,
+	HIT,
+	STRONG_HIT,
+	CRIT
+}

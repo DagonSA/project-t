@@ -5,6 +5,7 @@ const HOVERABLE_TOKENS_MASK := 2
 @onready var game_mode = $"../GameMode"
 @export var board_manager: Node2D
 @onready var tile_map_layer_0 = $"../L0_tilemap_data"
+@export var attacking: Attacking
 var last_hovered_token = null
 
 func _process(delta: float) -> void:
@@ -70,7 +71,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var area: Area2D = hits[0].collider
 			var parent_clicked = area.get_parent()
 			if parent_clicked == game_mode.targeted_character:
-				print("attacked")
+				attacking.attack_character(parent_clicked)
 				return
 			if (parent_clicked is Character and
 			game_mode.selected_char.team != Enums.Team.MONSTER and

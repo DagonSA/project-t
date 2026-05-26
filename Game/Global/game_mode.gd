@@ -31,8 +31,6 @@ var targeted_character: Character = null
 
 
 func _ready() -> void:
-	print(DisplayServer.window_get_size())
-	#Will probably need to add SETUP phase and others 
 	current_phase = TurnPhase.MOVEMENT_PHASE
 	current_turn = 1
 	current_team = Team.BLUE
@@ -125,7 +123,7 @@ func can_character_be_attacked(defender: Character):
 		var range = HexMathHelper.check_range_between_tiles(origin_tile, destination_tile)
 		print(range)
 		if range <= 1:
-			attacking.attack_initiation(selected_char, defender)
+			attacking.attack_initiation(selected_char, defender, range)
 			
 		
 	
