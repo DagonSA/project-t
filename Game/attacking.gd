@@ -41,7 +41,9 @@ func attack_character(defender: Character):
 	var advantage = attacker.attack - defender.defense
 	var type = 0 #For Enums melee
 	var effect = _roll_for_attack(type, advantage)
-	attack_result(effect)
+	attack_result_image(effect)
+	clear_after_attack()
+	
 	
 ## For now we'll only use melee. We'll decide how to diff. later.	
 func _roll_for_attack(type: int, advantage: int) -> Dictionary:
@@ -56,10 +58,16 @@ func _roll_for_attack(type: int, advantage: int) -> Dictionary:
 			break
 	return {}
 		
-func attack_result(dict: Dictionary):
+func attack_result_image(dict: Dictionary):
 	print(dict["result"])
 	attack_result_img.show()
 	attack_result_img.texture = dict["image"]
+	await get_tree().create_timer(2.0).timeout
+	attack_result_img.hide()
+	
+func clear_after_attack():
+	indicator_arrow.hide()
+	
 	
 	
 	

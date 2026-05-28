@@ -58,6 +58,8 @@ func is_movement_phase() -> bool:
 	return current_phase == TurnPhase.MOVEMENT_PHASE
 	
 func on_tile_clicked(clicked_tile: Vector2i):
+	if selected_char == null:
+		return
 	if selected_char.state == Enums.CharacterState.PREATTACKING:
 		selected_char.state = Enums.CharacterState.IDLE
 		targeted_character = null
