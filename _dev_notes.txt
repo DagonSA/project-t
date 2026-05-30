@@ -1,13 +1,8 @@
-Template for re-entering the flow: 
-	
-1. Where you are - in details ("in the middle of refactoring this function, line xx, deciding between Y and X, etc")
-2. The next physical action ("open auth.ts line 47 and finish the conditional")
-3. Any open tabs, half-formed thoughts, dead ends you already RULED out (both what we do but also what we don't want to do)
-4. Spend few minutes re-reading stuff and kind of 'locking' the topic in your head for point no 3
-
-1. Attacking - FINALY got the effect right. Now we need to add animation to the image, add attack effects and CLEAR the action
-2. Go to Attacking and attack function and check roll_dice function -> we need to write a 'getter' for the given result
-3. What we are NOT doing right now - animations, sound effects, etc. pure logic. 
+1. Attacking:
+	-> Need to add animation. Check with Claude -> how to create a simple animation (different transform/size/scale of image)
+	-> Find some hilarious hit effect sound and add this as well 
+	-> Deduct dmg stat from hp
+	-> Wonder about UI floating numbers 
 
 
 

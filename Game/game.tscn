@@ -317,7 +317,7 @@ indicator_arrow = NodePath("../Indicators/IndicatorArrow")
 
 [node name="Attack_result_img" type="Sprite2D" parent="Game/Attacking"]
 z_index = 5
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.1, 0.1)
 
 [node name="LineOfSight" type="Node2D" parent="Game" node_paths=PackedStringArray("board_manager")]
 script = ExtResource("39_npxor")

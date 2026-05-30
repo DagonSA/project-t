@@ -41,7 +41,7 @@ func attack_character(defender: Character):
 	var advantage = attacker.attack - defender.defense
 	var type = 0 #For Enums melee
 	var effect = _roll_for_attack(type, advantage)
-	attack_result_image(effect)
+	attack_result_animation(effect)
 	clear_after_attack()
 	
 	
@@ -58,10 +58,14 @@ func _roll_for_attack(type: int, advantage: int) -> Dictionary:
 			break
 	return {}
 		
-func attack_result_image(dict: Dictionary):
+func attack_result_animation(dict: Dictionary):
 	print(dict["result"])
 	attack_result_img.show()
 	attack_result_img.texture = dict["image"]
+	var tween = get_tree().create_tween()
+	tween.tween_property(attack_result_img, "scale", Vector2(0.5, 0.5), 1)
+	tween.parallel().tween_property(attack_result_img, "rotation", deg_to_rad(360), 1)
+	
 	await get_tree().create_timer(2.0).timeout
 	attack_result_img.hide()
 	
