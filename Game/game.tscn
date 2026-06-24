@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://vu2alle4qgci"]
+[gd_scene load_steps=67 format=3 uid="uid://vu2alle4qgci"]
 
 [ext_resource type="Script" uid="uid://b1fhn6jbyncn2" path="res://Game/Global/game.gd" id="1_otc75"]
 [ext_resource type="Texture2D" uid="uid://5cxfhximnpd3" path="res://WorldMap/Space backgroundbig.png" id="2_5yvwu"]
@@ -49,12 +49,19 @@
 [ext_resource type="Script" uid="uid://bwp5yalolfijg" path="res://Game/attacking.gd" id="40_5jp48"]
 [ext_resource type="Script" uid="uid://cjtgpwpgmdv33" path="res://Game/e_token_manager.gd" id="40_f3e3n"]
 [ext_resource type="Script" uid="uid://eqs3dxwixebq" path="res://Game/movement.gd" id="40_oc234"]
+[ext_resource type="AudioStream" uid="uid://bmk387dfyfq4o" path="res://Sounds/Walking1.ogg" id="41_2rwqr"]
 [ext_resource type="PackedScene" uid="uid://dn4wbkycaymah" path="res://Game/Event Tokens/event_token.tscn" id="41_o7qj0"]
 [ext_resource type="Script" uid="uid://bp6nogwfqp3fy" path="res://Game/end_turn.gd" id="42_03jko"]
 [ext_resource type="Texture2D" uid="uid://ch0yb873dmqx" path="res://WorldMap/Tiles/Blue_ship_frame.png" id="42_stjpj"]
+[ext_resource type="AudioStream" uid="uid://dmw34g20qpm24" path="res://Sounds/Dice_rolls/dice_roll_1.ogg" id="43_45fv8"]
 [ext_resource type="Texture2D" uid="uid://fj7g51l3w4v1" path="res://WorldMap/Tiles/Orange_ship_frame.png" id="43_npxor"]
+[ext_resource type="AudioStream" uid="uid://b2kkfi3f6lbop" path="res://Sounds/Dice_rolls/dice_roll_2.ogg" id="44_3kobi"]
+[ext_resource type="AudioStream" uid="uid://n6ow71eoysuf" path="res://Sounds/Dice_rolls/dice_roll_3.ogg" id="45_36esb"]
+[ext_resource type="AudioStream" uid="uid://bami0oh1kbnw4" path="res://Sounds/Dice_rolls/dice_roll_4.ogg" id="46_ajg3j"]
+[ext_resource type="AudioStream" uid="uid://daujqqkllevh8" path="res://Sounds/Dice_rolls/dice_roll_5.ogg" id="47_045m5"]
 [ext_resource type="Script" uid="uid://djak2w6wt5rga" path="res://Game/Event Tokens/event_token_data.gd" id="47_oc234"]
 [ext_resource type="Resource" uid="uid://cqroeq20uqfvt" path="res://EventTokens/Token_Monster_Lurker/Token_Monster_lurker.tres" id="48_2rwqr"]
+[ext_resource type="PackedScene" uid="uid://bivhhwnxjs7oi" path="res://Game/Effects/Laser Shot/Laser_shot.tscn" id="48_36esb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_wbluf")
@@ -305,15 +312,20 @@ tile_spawner = NodePath("../L0_tilemap_data/TileSpawner")
 character_spawner = NodePath("../CharacterSpawner")
 event_token_manager = NodePath("../ETokenManager")
 
-[node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow")]
+[node name="Movement" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow", "audio_player")]
 script = ExtResource("40_oc234")
 game_mode = NodePath("../GameMode")
 indicator_arrow = NodePath("../Indicators/IndicatorArrow")
+steps_sound = ExtResource("41_2rwqr")
+audio_player = NodePath("../Sounds/AudioStreamPlayer")
 
-[node name="Attacking" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow")]
+[node name="Attacking" type="Node2D" parent="Game" node_paths=PackedStringArray("game_mode", "indicator_arrow", "audio_player")]
 script = ExtResource("40_5jp48")
 game_mode = NodePath("../GameMode")
 indicator_arrow = NodePath("../Indicators/IndicatorArrow")
+dice_roll_sounds = Array[AudioStream]([ExtResource("43_45fv8"), ExtResource("44_3kobi"), ExtResource("45_36esb"), ExtResource("46_ajg3j"), ExtResource("47_045m5")])
+audio_player = NodePath("../Sounds/AudioStreamPlayer")
+laser_shot_blueprint = ExtResource("48_36esb")
 
 [node name="Attack_result_img" type="Sprite2D" parent="Game/Attacking"]
 z_index = 5
@@ -349,6 +361,10 @@ tilemap = NodePath("../L0_tilemap_data")
 game_mode = NodePath("../GameMode")
 board_manager = NodePath("../BoardManager")
 initial_tokens_to_spawn = Array[ExtResource("47_oc234")]([ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr"), ExtResource("48_2rwqr")])
+
+[node name="Sounds" type="Node" parent="Game"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Game/Sounds"]
 
 [node name="UI Root" type="CanvasLayer" parent="."]
 

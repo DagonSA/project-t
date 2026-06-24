@@ -7,6 +7,8 @@ class_name Movement
 @onready var board_manager = $"../BoardManager"
 @onready var tile_data_map = board_manager.tile_data_map
 @export var indicator_arrow: IndicatorArrow
+@export var steps_sound: AudioStream
+@export var audio_player: AudioStreamPlayer
 
 var final_tile_set: Array[Vector2i] = []
 var selected_char: Node2D
@@ -23,6 +25,7 @@ func _ready() -> void:
 ## called from GameMode signal around (de)selecting a character.
 func movement_initiation(char: Node):
 	indicator_arrow.hide()
+	tile_to_move = Vector2i(-1, -1)
 	tilemap_highlight_L1.clear_highlight()
 	selected_char = char
 	if selected_char == null:
@@ -127,6 +130,8 @@ func move_character(destination_tile: Vector2i):
 	indicator_arrow.hide()
 	tilemap_highlight_L1.clear_highlight()
 	selected_char.state = Enums.CharacterState.MOVING
+	audio_player.stream = steps_sound
+	audio_player.play()
 	var movement_tween = create_tween()
 	movement_tween.tween_property(selected_char, "global_position", tilemap_base_L0.get_global_pos(destination_tile), 1.0)
 	await movement_tween.finished

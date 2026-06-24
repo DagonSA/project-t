@@ -1,11 +1,27 @@
+cURRENTLY:
+	
+
+
 1. Attacking:
-	-> Need to add animation. Check with Claude -> how to create a simple animation (different transform/size/scale of image)
-	-> Find some hilarious hit effect sound and add this as well 
-	-> Deduct dmg stat from hp
+ 
+	-> Deduct dmg stat from hp + sound.
 	-> Wonder about UI floating numbers 
+	-> After attack, end character's activation
+		For this we probably need to figure out point no 2 to make it clearer 
+	
+2. More/better indication of character's activation:
+	- icons showing activation/activated
+	- end activation and choose one of the remaining possible characters instead
+		- unless we decide to have 'end activation button', but if nothing to be done - automatic
+		
+3. Work on camera, and then when choosing auto new character, move camera to it. 
+	Or even when selecting character (or double clicking), move it to the char
 
 
-
+Refactor: 
+	Communication and references. Exports, paths, autoloads/singletons, etc 
+	W attack initiuation/can character ba attacked przekazuje range, a tam chyba nie jest potrzebny - chyba że będziemy z teog korzystać w draw arrow, ale chyba nie? 
+	
 
 
 

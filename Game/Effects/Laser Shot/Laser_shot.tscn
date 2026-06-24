@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bivhhwnxjs7oi"]
+
+[ext_resource type="Texture2D" uid="uid://cc2be1ox681nr" path="res://Game/Effects/Laser Shot/laser_shot.png" id="1_ye2f8"]
+[ext_resource type="AudioStream" uid="uid://bwqd4bs0xt4yo" path="res://Sounds/Pew.ogg" id="2_odmpe"]
+
+[node name="LaserShot" type="Node2D"]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ye2f8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_odmpe")
+volume_db = 4.473
+autoplay = true
